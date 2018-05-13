@@ -1,0 +1,20 @@
+<view style="background-image: linear-gradient(46deg, #F3654C 0%, #F78C5C 100%);height:600rpx;padding-top:50rpx">
+  <view class="user-back">
+     <view class="user-center">
+      <image class="icon" src="/images/logo.png" mode="widthFix"></image>
+      <view class="user-message">
+        <view>
+          <view class="name">谢春花</view>
+          <view class="gray-button">已绑定手机号</view>
+        </view>
+        <view style="text-align:right">
+          <view class="score-title">累计积分</view>
+          <view class="score">2370</view>
+        </view>
+      </view>
+    </view> 
+
+
+
+  </view>
+</view>
