@@ -1,1 +1,6 @@
-{}
+{
+  "usingComponents": {
+    "login-yan": "/components/loginYan/loginYan",
+    "login-dislog":"/components/dialogModal/dialogModal"
+  }
+}

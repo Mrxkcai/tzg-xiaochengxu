@@ -1,0 +1,30 @@
+/* 对话框 */
+  .login-dislog{ 
+   width:650rpx;
+   height: 242rpx;
+   background:#fff;
+   position: fix;
+   margin:50% 7%; 
+   border-radius: 8px;
+ } 
+ /* 绑定成功样式 */
+ .login-dislog-top{
+   display: block;
+   width:100%;
+   height:141rpx;
+   border-bottom:1rpx solid #E5E5E5;
+   text-align:center;
+   /* font-family: PingFangSC-Regular; */
+   font: 36rpx/141rpx "";
+   color: #000000;
+ }
+ /* “知道了”按钮样式 */
+ .login-dislog-bottom{
+   display: block;
+   width:100%;
+   height:100rpx;
+   text-align:center;
+   /* font-family: PingFangSC-Regular; */
+   font: 36rpx/100rpx "";
+   color: #F46F57;
+ }

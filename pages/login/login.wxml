@@ -1,4 +1,32 @@
 <!--index.wxml-->
-<view class="container">
-  123
-</view>
+<block>
+  <view class="login login-top">
+    <image  class="login login-img"     
+       src="{{src}}"></image>
+  </view>
+  <view class="login-form">
+    <view class="itemView">
+    <input class="input-phone" name="inputPhone"  placeholder-style="color:#999;" maxlength='11' placeholder="请输入手机号"  bindblur="inputPhone"/>
+    </view>
+    <view class="itemView">
+      <input class="input-phone"  placeholder-style="color:#999;" name="inputYan" placeholder="请输入验证码"  
+      bindblur="inputYan" />
+      <login-yan></login-yan>
+    </view>
+    <view class="viewName">
+      <button class="loginBtn" 
+      bindtap="loginBtn">
+      <div class="login-sumit" wx:if="{{!sumbitShow}}">提交</div>
+      <div class="login-sumit" style="color:#FFF;opacity:1;" wx:else>提交</div>
+      </button>
+    </view>
+  </view>
+   <!-- <div wx:if="{{show}}" style="display:inline-block;background: rgba(0,0,0,0.5);width:100%;height:1344rpx; position:fixed;top:0rpx;left:0rpx; z-index:99" > 
+   <view class="login-dislog">
+      <text class="login-dislog-top">绑定成功</text>
+      <div class="login-dislog-bottom" bindtap="sknowEvent">知道了</div>
+   </view>
+  </div> -->
+  <login-dislog wx:if="{{show}}"></login-dislog>
+</block>
+
