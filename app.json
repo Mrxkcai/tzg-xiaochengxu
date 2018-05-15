@@ -1,12 +1,28 @@
 {
-  "pages":[
+  "pages": [
     "pages/lottery_list/lottery_list",
-    "pages/login/login"
+    "pages/login/login",
+    "components/loginYan/loginYan",
+    "components/dialogModal/dialogModal"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#ddd",
+    "selectedColor": "#1afa29",
+    "list": [
+      {
+        "pagePath": "pages/lottery_list/lottery_list",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/login/login",
+        "text": "登陆"
+      }
+    ]
   }
 }
