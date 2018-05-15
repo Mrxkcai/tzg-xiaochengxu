@@ -1,0 +1,10 @@
+.prize-info {
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 40rpx;
+}
+
+.cover {
+  width: 240rpx;
+}

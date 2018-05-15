@@ -1,6 +1,7 @@
-<view style="background-image: linear-gradient(46deg, #F3654C 0%, #F78C5C 100%);height:600rpx;padding-top:50rpx">
-  <view class="user-back">
-     <view class="user-center">
+<view style="padding-top:20rpx">
+  <image src="/images/backgrand.png" mode="widthFix" class="backgrang"></image>  
+  <view class="user">
+    <view class="user-center">
       <image class="icon" src="/images/logo.png" mode="widthFix"></image>
       <view class="user-message">
         <view>
@@ -9,12 +10,34 @@
         </view>
         <view style="text-align:right">
           <view class="score-title">累计积分</view>
-          <view class="score">2370</view>
-        </view>
+          <view class="score">
+            <image src="/images/score.png" mode="widthFix"></image>
+            2370
+          </view>
+        </view> 
+      </view>  
+    </view>
+    <view class="bar">
+      <image class="black_bar" src="/images/black_bar.png" mode="widthFix"></image>
+      <view class="sign-tip">
+        <image src="/images/bell.png" mode="widthFix"></image>
+        <text class="tip">明天记得来哦，连续签到可得<text class="small-score">30</text>积分</text>
       </view>
-    </view> 
+    </view>
+  </view> 
 
-
-
-  </view>
+  <view class="lottery-list">
+    <view class="tip-bar">
+      <view>
+        <text>积分抽奖</text> 
+        <image src="/images/quest.png" mode="widthFix" class="quest"></image>
+      </view>
+      <image src="/images/server.png" mode="widthFix" class="server"></image> 
+    </view>
+    <view>
+       <prize-info prize-info="{{prizeInfo}}">
+       </prize-info> 
+    </view>
+  
+  </view> 
 </view>

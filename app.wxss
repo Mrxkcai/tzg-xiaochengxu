@@ -9,5 +9,6 @@
   box-sizing: border-box;
 } 
 page {
-  background: #f7f7f7;
+    background: #f7f7f7;  
+    font-size: 0;
 }
