@@ -1,0 +1,17 @@
+<view class="prize-info">
+  <image src="{{prizeInfo.cover}}" mode="widthFix" class="cover"></image>
+  <view>
+    <text>{{prizeInfo.name}}</text>
+    <text>{{prizeInfo.score}}积分抽奖</text>
+    <view>
+      <text>官网售价</text>
+      <text>{{prizeInfo.price}}</text>
+    </view>
+    <view>
+      <text>{{prizeInfo.createTime}}</text>
+      <text>自动开将</text>
+    </view>
+  </view>
+  <view style="font-size:20rpx;color:#333">123</view>
+  <slot></slot>
+</view>

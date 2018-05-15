@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "prize-info": "/components/prize_info/prize_info"
+  }
+}

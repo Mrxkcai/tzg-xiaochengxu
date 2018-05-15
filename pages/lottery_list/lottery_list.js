@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    prizeInfo: {
+      cover: 'http://img.taozugong.com/product/2018-05-04/88d8afabfDm8jS@!p_mass_90_size_750',
+      name: 'Apple iPhone8 全网通4G手机亮色32G',
+      score: '3000',
+      price: 5000,
+      createTime: '05月20日12：00'
+    }
   },
 
   /**
