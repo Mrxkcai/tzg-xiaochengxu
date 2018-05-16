@@ -4,6 +4,8 @@
 Page({
   data: {
     src: "../../images/logo.png",
+    img:"../../images/rule_logo.png",
+    imges:"../../images/relu_copy.png",
     sumbitShow:false,
     see: true,
     show: false,
@@ -56,6 +58,7 @@ Page({
           success: function (res) {
           }
         })
+        
       }
     }
   },
@@ -84,10 +87,4 @@ Page({
       }
     }
   },
-  //点击“知道了”关闭对话框
-  // sknowEvent: function () {
-  //   this.setData({
-  //     show: !this.data.show
-  //   })
-  // }
 })

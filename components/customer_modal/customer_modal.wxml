@@ -1,0 +1,25 @@
+<view> 
+  <div wx:if="{{cancel}}" class="customerService_modal"> 
+  <view class="customerService_modal_index">
+     <view class="customerService_top">
+       <view class="customerService_title">
+         <span class="customerService_people">联系客服</span>
+       </view>
+       <view class="customerService_content">
+         <span class="customerService_tel">0571-8888888</span>
+       </view> 
+     </view>
+     <div class="customerService_bot">
+        <view class="customerService_tie">
+          <text class="customerService_cancle"
+           bindtap="serverCancel">取消</text>
+        </view>
+        <view class="customerService_tie" style="border-right:0">
+          <text class="customerService_cancle" 
+          style="color: #EA5739;" 
+          bindtap="serverCall">拨打</text>
+        </view>   
+     </div> 
+   </view>
+  </div>
+</view>

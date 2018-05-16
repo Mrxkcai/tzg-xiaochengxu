@@ -1,6 +1,0 @@
-<view>
-   <button class="login-yanZ" disabled='{{disabled}}' hover-class="button-hover" 
-    data-id="2" bindtap="getVerificationCode">
-    {{time}}
-   </button>
-</view>
