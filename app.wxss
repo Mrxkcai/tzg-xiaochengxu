@@ -7,7 +7,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
-page {
+page{
     background: #f7f7f7;  
     font-size: 0;
+    font-family: PingFangSC-Regular;
+    box-sizing: border-box;
 }
