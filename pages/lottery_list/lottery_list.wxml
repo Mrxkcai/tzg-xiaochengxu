@@ -34,8 +34,8 @@
       </view>
       <image src="/images/server.png" mode="widthFix" class="server"></image> 
     </view>
-    <view>
-       <prize-info prize-info="{{prizeInfo}}">
+    <view wx:for="{{awardList}}" wx:key="{{item}}">
+       <prize-info prize-info="{{item}}">
        </prize-info> 
     </view>
   

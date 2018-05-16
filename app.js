@@ -34,6 +34,7 @@ App({
     // })
   },
   globalData: {
+    baseUrl: 'https://api.taozugong.com/award',
     userInfo: null
   }
 })

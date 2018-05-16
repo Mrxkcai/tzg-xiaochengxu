@@ -1,10 +1,148 @@
 .prize-info {
-  font-family: PingFangSC-Regular;
+  position: relative;
+}
+.prize-body {
+  padding: 0 20rpx 30rpx 20rpx; 
+  overflow: hidden;
+  position: relative;
+}
+.prize-top {
+  padding-top: 70rpx; 
+  border-top: 1px solid #E5E5E5;
+  display: flex; 
+}
+.cover {
+  width: 240rpx;
+  margin-right: 24rpx;
+}
+
+.prize-title {
   font-size: 28rpx;
   color: #333333;
   line-height: 40rpx;
+  height: 80rpx;
+}
+.prize-score {
+  font-size: 22rpx;
+  color: #FFFFFF;
+  background: #F3654C;
+  border-radius: 10rpx;
+  padding: 3rpx 16rpx;
+}
+.gary-label {
+  font-size: 22rpx;
+  color: #999999;
+  line-height: 24rpx;
+  background: #F5F5F5;
+  padding: 3rpx 10rpx;
+  margin-right: 10rpx;
+}
+.money-label {
+  font-size: 20rpx;
+  color: #333333;
+}
+.prize-price {
+  font-size: 28rpx;
+  color: #151515;
+  line-height: 28rpx;
+}
+.prize-date {
+  font-size: 22rpx;
+  color: #999999;
+  margin-top: 30rpx;
+  line-height: 30rpx;
+}
+.prize-footer {
+ margin-top: 40rpx;
+}
+.prize-button {
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  display: inline-block;
+  padding: 15rpx 75rpx;
+  line-height: 40rpx;
 }
 
-.cover {
-  width: 240rpx;
+.orage-plain-button {
+  color: #F3654C;
+  border: 1px solid #EB583A;
+  background: #fff;
+}
+.orage-solid-button {
+  color: #FFFFFF;
+  background: #F3654C;
+   /* border: 1px solid #F3654C;   */
+}
+
+.gary-plain-button {
+  border: 1px solid #999999;
+  color: #999999;
+  background: #fff;
+}
+
+.gary-solid-button {
+  /* border: 1px solid #999999; */
+  color: #fff;
+  background: #999;
+}
+
+.prize-right-button {
+  float:right;
+  position: relative;
+}
+.prize-tag {
+  position: absolute;
+  width: 115rpx;
+  top: -85%; 
+  right: -20rpx;
+}
+
+.lottery-status-orange {
+  transform: rotate(-40deg);    
+  font-size: 22rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  position: absolute;
+  top: 25rpx;
+  left:-48rpx;
+  background: linear-gradient(90deg, #FF5C41 0%, #FF784B 100%);
+  padding: 3rpx;
+  width: 200rpx; 
+  text-align: center;
+  box-shadow: 0 1rpx 5rpx #E7715A;
+}
+
+.lottery-status-gary {
+  transform: rotate(-40deg);    
+  font-size: 22rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  position: absolute;
+  top: 25rpx;
+  left: -48rpx;
+  background: linear-gradient(90deg, #5F5F5F 0%, #A09795 100%);
+  padding: 3rpx;
+  width: 200rpx; 
+  text-align: center;
+  box-shadow: 0 1rpx 5rpx #AEA8A7;
+}
+
+.circular-left {
+  border-radius: 50%;
+  width: 20rpx;
+  height: 20rpx;
+  background: #F7F7F7;
+  position: absolute;
+  top: -10rpx;
+  left: -10rpx;
+}
+
+.circular-right {
+  border-radius: 50%;
+  width: 20rpx;
+  height: 20rpx;
+  background: #F7F7F7;
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
 }
