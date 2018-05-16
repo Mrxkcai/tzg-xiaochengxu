@@ -21,12 +21,9 @@
       </button>
     </view>
   </view>
-   <!-- <div wx:if="{{show}}" style="display:inline-block;background: rgba(0,0,0,0.5);width:100%;height:1344rpx; position:fixed;top:0rpx;left:0rpx; z-index:99" > 
-   <view class="login-dislog">
-      <text class="login-dislog-top">绑定成功</text>
-      <div class="login-dislog-bottom" bindtap="sknowEvent">知道了</div>
-   </view>
-  </div> -->
   <login-dislog wx:if="{{show}}"></login-dislog>
+    <!-- <login-dislog></login-dislog> -->
+     <!-- <rule-modal></rule-modal>    -->
+   <!-- <customer-modal></customer-modal>  -->
 </block>
 

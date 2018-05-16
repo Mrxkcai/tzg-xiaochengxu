@@ -14,7 +14,4 @@
    line-height:50rpx; 
    text-align: center; 
    background-color:#fff;
- } 
- .button-hover{
-  background-color: #fff;  
  }

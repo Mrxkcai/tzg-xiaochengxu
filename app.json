@@ -1,28 +1,12 @@
 {
   "pages": [
-    "pages/lottery_list/lottery_list",
     "pages/login/login",
-    "components/loginYan/loginYan",
-    "components/dialogModal/dialogModal"
+    "pages/lottery_list/lottery_list"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "淘租公",
     "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#ddd",
-    "selectedColor": "#1afa29",
-    "list": [
-      {
-        "pagePath": "pages/lottery_list/lottery_list",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/login/login",
-        "text": "登陆"
-      }
-    ]
   }
 }
