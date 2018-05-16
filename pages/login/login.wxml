@@ -23,7 +23,7 @@
   </view>
   <login-dislog wx:if="{{show}}"></login-dislog>
     <!-- <login-dislog></login-dislog> -->
-    <!-- <rule-modal></rule-modal>   -->
+     <!-- <rule-modal></rule-modal>    -->
    <!-- <customer-modal></customer-modal>  -->
 </block>
 
