@@ -28,16 +28,21 @@ Page({
         title: '请输入11位号',
       })
     }
-    this.setData({
-     inputPhone: e.detail.value
-   })
+  //   this.setData({
+  //    inputPhone: e.detail.value
+  //  })
+    console.log(e.detail.value)
+    wx.setStorage({
+      key: "inputPhone",
+      data: e.detail.value
+    })
   },
   // 当验证码失去焦点时验证
   inputYan: function (e) {
+    console.log(e.detail.value)
     var that = this;
     var inputYan = e.detail.value
     var huozheng = this.data.huozheng
-    console.log(e.detail.value)
     that.setData({
       inputYan: inputYan,
       zhengTrue: false,
@@ -72,6 +77,12 @@ Page({
         duration: 2000
       })
     } else {
+      wx.getStorage({
+        key: 'result',
+        success: function (res) {
+          console.log(123, res)
+        }
+      })
       var inputYan = this.data.inputYan
       var huozheng=this.data.huozheng;
       if (inputYan == huozheng){

@@ -8,7 +8,8 @@ Component({
    fun_id: 2,
    time: '获取验证码', //倒计时 
    currentTime: 61,
-   butShow:true
+   butShow:true,
+   result:""
   },
  methods: {
    getCode: function (options) {
@@ -32,19 +33,23 @@ Component({
          })
        }
      }, 500)
-     wx.request({
-       url: 'http://api.taozugong.com:8080/award/sms/getAuthCode',
-       data: {
-         tel: this.data.inputPhone,
-       },
-       header: {
-         'content-type': 'application/json'
-       },
+     wx.getStorage({
+       key: 'inputPhone',
        success: function (res) {
-         var result = res.data.code;
-         console.log(result)
-         that.setData({
-           huozheng: result,
+         wx.request({
+           url: 'https://api.taozugong.com/award/sms/getAuthCode?',
+           data: {
+             mobile: res.data,
+           },
+           header: {
+             'content-type': 'application/json'
+           },
+           success: function (res) {
+             wx.setStorage({
+               key: "result",
+               data: res.data.code
+             })
+           }
          })
        }
      })
