@@ -25,5 +25,6 @@
     <!-- <login-dislog></login-dislog> -->
      <!-- <rule-modal></rule-modal>    -->
    <!-- <customer-modal></customer-modal>  -->
+         <!-- <sign-modal></sign-modal> -->
 </block>
 

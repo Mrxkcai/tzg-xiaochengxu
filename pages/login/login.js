@@ -28,47 +28,52 @@ Page({
         title: '请输入11位号',
       })
     }
-  //   this.setData({
-  //    inputPhone: e.detail.value
-  //  })
     console.log(e.detail.value)
     wx.setStorage({
       key: "inputPhone",
       data: e.detail.value
     })
+    this.setData({
+     inputPhone: e.detail.value
+    })
   },
   // 当验证码失去焦点时验证
   inputYan: function (e) {
-    console.log(e.detail.value)
-    var that = this;
-    var inputYan = e.detail.value
-    var huozheng = this.data.huozheng
-    that.setData({
-      inputYan: inputYan,
-      zhengTrue: false,
+    this.setData({
+      inputYan: e.detail.value
     })
-    if (inputYan.length >= 4) {
-      if (inputYan == huozheng) {
-        that.setData({
-          zhengTrue: true,
-        })
-      } else {
-        that.setData({
-          zhengTrue: false,
-          sumbitShow: !this.data.sumbitShow,
-        })
-        wx.showModal({
-          content: '输入验证码有误',
-          showCancel: false,
-          success: function (res) {
-          }
-        })
+    // console.log(e.detail.value)
+    // var that = this;
+    // var inputYan = e.detail.value
+    // var huozheng = this.data.huozheng
+    // that.setData({
+    //   inputYan: inputYan,
+    //   zhengTrue: false,
+    // })
+    // if (inputYan.length >= 4) {
+    //   if (inputYan == huozheng) {
+    //     that.setData({
+    //       zhengTrue: true,
+    //     })
+    //   } else {
+    //     that.setData({
+    //       zhengTrue: false,
+    //       sumbitShow: !this.data.sumbitShow,
+    //     })
+    //     wx.showModal({
+    //       content: '输入验证码有误',
+    //       showCancel: false,
+    //       success: function (res) {
+    //       }
+    //     })
         
-      }
-    }
+    //   }
+    // }
   },
   //提交按钮的函数
   loginBtn: function () {
+    var that = this;
+    console.log(this.data.inputPhone, this.data.inputYan)
     if (this.data.inputPhone.length == 0 ||
       this.data.inputYan.length == 0) {
       wx.showToast({
@@ -77,25 +82,30 @@ Page({
         duration: 2000
       })
     } else {
-      wx.getStorage({
-        key: 'result',
-        success: function (res) {
-          console.log(123, res)
+      wx.request({
+        url:'https://api.taozugong.com/award/sms/verifyMobile',
+        method:'POST',
+        // dataType: 'json',
+        data:{
+          mobile:this.data.inputPhone,
+          authCode:this.data.inputYan,
+          openId:111
+        },
+        header:{
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success:function(res){
+          console.log(res.data)
+          if(res.data.code==200){
+            
+            console.log(123)
+            // var show = !this.data.show
+              that.setData({
+              show: !that.data.show
+            })
+          }
         }
       })
-      var inputYan = this.data.inputYan
-      var huozheng=this.data.huozheng;
-      if (inputYan == huozheng){
-        this.setData({
-          show: !this.data.show
-        })
-      }else{
-        wx.showToast({
-          title: '手机号或验证码错误!',
-          icon:"none",
-          duration: 1000
-        })
-      }
     }
-  },
+  }
 })
