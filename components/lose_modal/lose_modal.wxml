@@ -1,4 +1,18 @@
-<!--index.wxml-->
-<view class="container">
-  123
+<view hidden='{{!winVisible}}' class='win-modal' animation="{{animModalData}}" bindtap='closeModal'>
+  <view animation="{{bodyAnimModalData}}" style='width:100%;height:100%;'>
+    <view class="win-body">
+        <view class='win-bar'>
+          <image src='/images/win_bar.png' mode='widthFix'></image>
+          <text>很遗憾</text> 
+        </view>
+        <view class='win-content'>
+          <image src='/images/ribbon.png' mode='widthFix' class="win-ribbon"></image>
+          <view style='width: 460rpx;display:inline-block'>
+            <view class='title'>{{loseTip}}</view>
+          </view>
+          <button class="win-button" bindtap='closeModal'>郑知道了</button>
+        </view>
+    </view>
+    <image src='/images/close.png' mode='widthFix' class="close"></image>
+  </view>
 </view>

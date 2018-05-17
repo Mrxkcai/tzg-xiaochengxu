@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "prize-info": "/components/prize_info/prize_info"
+    "prize-info": "/components/prize_info/prize_info",
+    "win-modal": "/components/win_modal/win_modal",
+    "lose-modal": "/components/lose_modal/lose_modal"
   }
 }

@@ -1,6 +1,12 @@
 const baseUrl = getApp().globalData.baseUrl
 Page({
   data: {
+    winVisible: false,
+    winTip: {
+      title: '恭喜你抽中了雅萌瘦脸射频美颜仪',
+      contentList: ['请确保绑定好手机号，客服会第一时间联系你', '你也可以主动联系客服']
+    },
+    loseTip: '好可惜，差点就中了呢，再试试吧',
     awardList: [
       {
         awardId: 1,
@@ -51,12 +57,14 @@ Page({
         "status": 2
       },
     ],
+    winModal: ''
   },
   onLoad(options) {
     this.getAwardList()
+    // this.getAuthCode()
   },
   onReady: function () {
-  
+    this.winModal = this.selectComponent('#winMoal')
   },
   onShow: function () {
   
@@ -74,6 +82,27 @@ Page({
   
   },
   onShareAppMessage: function () {
+  },
+  getAuthCode() {
+    wx.request({
+      url: baseUrl + '/sms/verifyMobile',
+      method: 'POST',
+      data: {
+        openId: '111',
+        mobile: '15276287105',
+        authCode: '1234',
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: (res) => {
+        if (res.data.code == 200) {
+          this.setData({
+            // awardList: res.data.data.dataList
+          })
+        }
+      }
+    })
   },
   getAwardList() {
     wx.request({
@@ -96,5 +125,12 @@ Page({
         }
       }
     })
+  },
+  openWinModal() {
+
+    this.setData({
+      winVisible: true
+    })
+    this.winModal.openModal()
   }
 })

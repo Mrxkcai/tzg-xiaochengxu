@@ -25,12 +25,11 @@
       </view>
     </view>
   </view> 
-
   <view class="lottery-list">
     <view class="tip-bar">
       <view>
         <text>积分抽奖</text> 
-        <image src="/images/quest.png" mode="widthFix" class="quest"></image>
+        <image src="/images/quest.png" mode="widthFix" class="quest" bindtap='openWinModal'></image>
       </view>
       <image src="/images/server.png" mode="widthFix" class="server"></image> 
     </view>
@@ -38,6 +37,8 @@
        <prize-info prize-info="{{item}}">
        </prize-info> 
     </view>
-  
   </view> 
+  
+  <win-modal win-visible="{{winVisible}}" win-tip="{{winTip}}" id="winMoal"></win-modal>
+  <lose-modal lose-tip="{{loseTip}}" id="loseMoal"></lose-modal>
 </view>
