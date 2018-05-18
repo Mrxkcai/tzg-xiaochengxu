@@ -14,14 +14,14 @@ Component({
     }
   },
   data: {
-    winVisible: true,
+    loseVisible: false,
     animationData: '',
     bodyAnimModalData: ''
   },
   methods: {
     openModal() {
       this.setData({
-        winVisible: true
+        loseVisible: true
       })
       this.openOverlayModal()
       this.openBodyModal()
@@ -29,6 +29,11 @@ Component({
     closeModal() {
       this.closeOverlayModal()
       this.closeBodyModal()
+      setTimeout(() => {
+        this.setData({
+          loseVisible: false
+        });
+      }, 500)
     },
     openBodyModal() {
       var animation = wx.createAnimation({
@@ -39,10 +44,8 @@ Component({
       })
 
       this.bodyAnimation = animation
-      var height = wx.getSystemInfoSync().windowHeight
+      // var height = wx.getSystemInfoSync().windowHeight
       animation.translateY(0).step()
-      // animation.scale(2, 2).rotate(45).step()
-
       this.setData({
         bodyAnimModalData: animation.export(),
       })
@@ -73,11 +76,7 @@ Component({
         animModalData: this.animation.export()
       });
 
-      setTimeout(() => {
-        this.setData({
-          winVisible: false
-        });
-      }, 500)
+      
     }
   }
 })

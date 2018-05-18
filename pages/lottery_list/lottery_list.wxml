@@ -1,6 +1,13 @@
 <view style="padding-top:20rpx">
   <image src="/images/backgrand.png" mode="widthFix" class="backgrang"></image>  
   <view class="user">
+
+    <!-- <form report-submit="true" bindsubmit="formSubmit">
+      <button open-type="openSetting">打开授权设置页</button>  
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> 
+      <button formType="submit">提交</button>
+    </form> -->
+
     <view class="user-center">
       <image class="icon" src="/images/logo.png" mode="widthFix"></image>
       <view class="user-message">
@@ -29,16 +36,17 @@
     <view class="tip-bar">
       <view>
         <text>积分抽奖</text> 
-        <image src="/images/quest.png" mode="widthFix" class="quest" bindtap='openWinModal'></image>
+        <image src="/images/quest.png" mode="widthFix" class="quest" bindtap='openModal'></image>
       </view>
       <image src="/images/server.png" mode="widthFix" class="server"></image> 
     </view>
+
     <view wx:for="{{awardList}}" wx:key="{{item}}">
        <prize-info prize-info="{{item}}">
        </prize-info> 
     </view>
   </view> 
   
-  <win-modal win-visible="{{winVisible}}" win-tip="{{winTip}}" id="winMoal"></win-modal>
-  <lose-modal lose-tip="{{loseTip}}" id="loseMoal"></lose-modal>
+  <win-modal win-tip="{{winTip}}" id="winModal"></win-modal>
+  <lose-modal lose-tip="{{loseTip}}" id="loseModal"></lose-modal>
 </view>

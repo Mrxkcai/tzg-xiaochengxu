@@ -9,23 +9,10 @@
 
 .win-body {
   position: absolute;
-  top: 20%;      
-  /* transform: translateY(-50%);     */
+  top: 19%;      
+  /* transform: translateY(-50%);      */
   width: 100%;
   text-align: center;
-  transition: all 2s;
-}
-.win-body-active {
-  top: 51%;   
-  transform: translateY(-50%);    
-}
-.win-head {
-  width:540rpx;
-  top: -205rpx;
-  position: absolute;
-  left: 52%;
-  transform: translateX(-50%);
-  z-index: 110;
 }
 .win-bar {
   position: relative;
@@ -57,50 +44,14 @@
   text-align: center;
 }
 
-.win-content .win-ribbon {
-  position: absolute;
-  top: 20rpx;
-  left: -25rpx; 
-  display: inline-block;
-  width: 45rpx;
-}
-
-.win-content .describe {
-  font-family: PingFangSC-Regular;
-  font-size: 22rpx;
-  color: #333333;
-  letter-spacing: 0;
-  text-align: left;
-  margin-bottom: 20rpx;
-  display: flex;
-  align-items: baseline;   
-}
-
-.win-content .describe text {
-  width: 20rpx;
-  height: 20rpx;
-  background: #EE6643;
-  display: inline-block;
-  border-radius: 50%;
-  margin-right: 10rpx;
-}
-
 .win-content .title{
-  font-family: PingFangSC-Medium;
+  font-family: PingFangSC-Regular;
   font-size: 30rpx;
   color: #333333;
   letter-spacing: 0;
   text-align: left;
   margin-bottom: 30rpx;
 }
-
-.win-content .win-footer {
-  width: 135rpx;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
 .win-button {
   font-family: PingFangSC-Regular;
   font-size: 28rpx;
@@ -111,8 +62,16 @@
   display: inline-block;
   padding: 9rpx 54rpx;
   line-height: 40rpx;
-  margin-top: 20rpx;
+  margin-top: 40rpx;
+}
+.sad {
+  width: 137rpx;
+  display: inline-block;
 }
 .close {
-  
+  width: 77rpx;
+  bottom: -115rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }

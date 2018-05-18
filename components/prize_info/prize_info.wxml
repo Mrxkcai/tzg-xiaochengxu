@@ -1,10 +1,10 @@
 <view class="prize-info">
   <text class="circular-left"></text>
   <text class="circular-right"></text>
-  
   <view class="prize-body">
-   <view class="lottery-status-orange" wx:if="{{prizeInfo.status==1}}">抽奖进行中</view>  
-   <view class="lottery-status-gary" wx:else>抽奖结束</view>   
+   <view class="lottery-status-orange" wx:if="{{prizeInfo.status==1}}">抽奖倒计时</view>  
+   <view class="lottery-status-orange" wx:elif="{{prizeInfo.status==2}}">抽奖倒计时</view>  
+   <view class="lottery-status-gary" wx:elif="{{prizeInfo.status==3}}">抽奖结束</view>   
     <view class="prize-top">
       <image src="{{prizeInfo.productPic}}" mode="widthFix" class="cover"></image>
       <view style="width:386rpx">
@@ -24,7 +24,7 @@
       </view>
     </view>
     <view class="prize-footer">
-        <button class="prize-button {{prizeInfo.status==1?'orage-plain-button':'gary-plain-button'}}" hover-class="orage-solid-button">分享好友</button>
+        <button class="prize-button {{prizeInfo.status==1?'orage-plain-button':'gary-plain-button'}}" hover-class="orage-solid-button" open-type="share">分享好友</button>
         <view class="prize-right-button">
           <button class="prize-button {{prizeInfo.status==1?'orage-solid-button':'gary-solid-button'}}">参与抽奖</button>
           <image wx:if="{{prizeInfo.status==2}}" src="{{prizeInfo.isWinning?'/images/win.png':'/images/lose.png'}}" mode="widthFix" class="prize-tag"></image>  
