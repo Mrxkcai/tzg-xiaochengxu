@@ -6,31 +6,22 @@ Page({
     src: "../../images/logo.png",
     img:"../../images/rule_logo.png",
     imges:"../../images/relu_copy.png",
-    sumbitShow:false,
-    see: true,
-    show: false,
+    sumbitShow:false, //是否提交
+    show: false,//是否绑定成功
     inputShow: true,
-    infoMess: "",
-    inputPhone: "",
-    inputYan: "",
-    huozheng:"",
-    showModalStatus: false  ,
-    animationData: {}
-  },
-  onMyEvent: function (e) {
-    this.setData({
-      see:!this.data.see
-    })
+    inputPhone: "",//手机号
+    inputYan: "",//验证码
+    // huozheng:"",
   },
   //手机号的验证
   inputPhone: function (e) {
     var myreg = /^[1][3,4,5,7,8][0-9]{9}$/g;
     if (!myreg.test(e.detail.value)) {
       wx.showToast({
-        title: '请输入11位号',
+        title: '请输入11位手机号',
+        icon: "none",
       })
     }
-    console.log(e.detail.value)
     wx.setStorage({
       key: "inputPhone",
       data: e.detail.value
@@ -76,18 +67,12 @@ Page({
   loginBtn: function () {
     var that=this
     console.log(this.data.inputPhone, this.data.inputYan)
-    if (this.data.inputPhone.length == 0 ||
-      this.data.inputYan.length == 0) {
+    if (this.data.inputPhone.length == 0 ) {
         wx.showToast({
           title: '手机号或验证码错误！',
           icon: "none",
           duration: 2000
         })
-      // this.setData({
-      //   sumbitShow: !this.data.sumbiShow,
-      //   show: !this.data.show
-      // })
-      // this.onShow()
     } else {
       wx.request({
         url:'https://api.taozugong.com/award/sms/verifyMobile',
@@ -104,12 +89,17 @@ Page({
           console.log(res.data)
           if(res.data.code==200){
               that.setData({
-               sumbitShow:!that.data.sumbiShow,
-               show: !that.data.show
+               show: !that.data.show,
+               sumbitShow: !that.data.sumbiShow
             })
           }
         }
       })
     }
-  }
+  },
+  // bindPhone(e) {
+  //   this.setData({
+  //     inputPhone: e.detail.value
+  //   })
+  // }
 })

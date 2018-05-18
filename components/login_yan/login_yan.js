@@ -11,6 +11,12 @@ Component({
    butShow:true,
    result:""
   },
+ properties: {
+   inputPhone: {            // 属性名
+     type: Number,     
+     value: ''     // 属性初始值（可选），如果未指定则会根据类型选择一个
+   }
+ },
  methods: {
    getCode: function (options) {
      var that = this;
@@ -18,48 +24,42 @@ Component({
      this.setData({
         butShow:!this.data.butShow,
      })
-    //  var phone=this.data.
      interval = setInterval(function () {
-       currentTime--;
-       that.setData({
-         time: currentTime + '秒'
-       })
-       if (currentTime <= 0) {
-         clearInterval(interval)
-         that.setData({
-           time: '重新发送',
-           currentTime: 61,
-           disabled: false
-         })
-       }
-     }, 500)
-     wx.getStorage({
-       key: 'inputPhone',
-       success: function (res) {
-         wx.request({
-           url: 'https://api.taozugong.com/award/sms/getAuthCode?',
-           data: {
-             mobile: res.data,
-           },
-           header: {
-             'content-type': 'application/json'
-           },
-           success: function (res) {
-             wx.setStorage({
-               key: "result",
-               data: res.data.code
-             })
-           }
-         })
-       }
-     })
+      currentTime--;
+      that.setData({
+        time: currentTime + '秒'
+      })
+      if (currentTime <= 0) {
+        clearInterval(interval)
+        that.setData({
+          time: '重新发送',
+          currentTime: 61,
+          disabled: false
+        })
+      }
+     }, 700)
+    if (!this.data.inputPhone) {
+      console.log(3)
+      wx.showToast({
+        title: '请输入11位手机号',
+        icon: "none",
+      })
+      clearInterval(interval)
+    }
+    wx.request({
+      url: 'https://api.taozugong.com/award/sms/getAuthCode',
+      data: {
+        mobile: this.data.inputPhone,
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+      }
+    })
    },
    getVerificationCode() {
      this.getCode();
-     var that = this
-     that.setData({
-       disabled: true
-     })
    },
  }
 })

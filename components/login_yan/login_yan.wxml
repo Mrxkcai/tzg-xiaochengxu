@@ -1,17 +1,17 @@
 <view>
    <button class="login-yanZ" 
     disabled='{{disabled}}'  
-    wx:if="{{butShow}}"
+ 
     data-id="2" 
     bindtap="getVerificationCode">
     {{time}}
    </button>
-   <button class="login-yanZ te" 
+   <!-- <button class="login-yanZ te" 
     style="background-color:#fff;color: #666;font-size: 24rpx"
     disabled='{{disabled}}'  
     wx:if="{{!butShow}}"
     data-id="2" 
     bindtap="getVerificationCode" >
     {{time}}
-   </button>
+   </button> -->
 </view>

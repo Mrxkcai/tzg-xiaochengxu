@@ -9,7 +9,7 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log(res)
+        // console.log(res)
         // if (res.code) {
         //   wx.request({
         //     url: '',
