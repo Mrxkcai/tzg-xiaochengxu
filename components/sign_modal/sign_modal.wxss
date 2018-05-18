@@ -1,1 +1,156 @@
 /**index.wxss**/
+.sign_modal{
+  display:inline-block;
+  background: rgba(0,0,0,0.5);
+  width:100%;
+  height:1344rpx; 
+  position:fixed;
+  top:0rpx;
+  left:0rpx; 
+  z-index:99
+}
+.sign_modal_index{
+   width:460rpx;
+   height: 540.6rpx;
+   margin:0 145rpx; 
+   margin-top:386.4rpx;
+   border-radius: 8px;
+   position: relative;
+}
+.sign_top{
+  width:180.6rpx;
+  position:absolute;
+  top:302.4rpx;
+  left:285.2rpx;
+  text-align: center;
+
+}
+.sign_image{
+  width:202.6rpx;
+  height:179.6rpx;
+}
+/* 已连接的样式 */
+.sign_title{
+  width:354.4rpx;
+  height:75rpx;
+  margin-bottom:23.2rpx;
+  position:absolute;
+  top:125.6rpx;
+  left:53rpx;
+  text-align: center;
+}
+.sign_con{
+  /* padding-top:23rpx; */
+  padding-bottom:25rpx;
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  color: #EAE7E7;
+}
+.sign_day{
+  font-size:50rpx;
+  font-weight: 700;
+}
+.sign_center{
+  height: 76.5rpx;
+  /* width:160rpx; */
+  width:330rpx;
+  position: absolute;
+  top:224.9rpx;
+  left:142.2rpx;
+  
+}
+.sign_center_left{
+   float: left;
+   height: 76.5rpx;
+   width:46.3rpx;
+}
+.sign_center_img{
+  display: inline-block;
+  width:50rpx;
+  height:46.2rpx;
+  vertical-align: middle;
+  margin-top:15rpx;
+}
+.sign_center_add{
+  margin-left:17.3rpx;
+  float: left;
+  /* display: inline-block; */
+  width:200rpx;
+  height:67rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 48rpx;
+  color: #FFFFFF;
+  
+}
+.sign_cneter_num{
+  display: inline-block;
+  font-family: PingFangSC-Medium;
+  font-size: 52rpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+.sign_content{
+  position: absolute;
+  left:56rpx;
+  right:56rpx;
+  top:306.6rpx;
+  width:348rpx;
+  height:40rpx;
+  background: #fff;
+  margin-top:14.7rpx;
+}
+.sign_content_title{
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #999999;
+  text-align: center;
+  line-height: 40rpx;
+}
+.sign_bottom{
+  width:354.4rpx;
+  height:75rpx;
+  background: #FFE326;
+  border-radius: 100px;
+  position: absolute;
+  left:53rpx;
+  right:53rpx;
+  top:406.76rpx;
+}
+.sign_bottom_left{
+  font-family: PingFangSC-Regular;
+font-size: 40rpx;
+line-height: 75rpx;
+color: #B82E15;
+ text-align: center; 
+}
+ .sign_bottom_right{
+   margin-left:15.7rpx;
+   color:#B82E15;
+   font-size: 50rpx;
+   font-weight: 700;
+ }
+ .sign_modal_circle{
+   margin-top:60rpx;
+   text-align: center;
+ }
+ .sign_circle{
+   display: inline-block;
+   width:77rpx;
+   height:77rpx;
+   border:1px solid #fff;
+   border-radius: 50%;
+ }
+ .sign_fail{
+   display:inline_block;
+   color:#fff;
+   font-weight:100;
+   font-size:77rpx;
+   line-height: 62rpx;
+   vertical-align: middle;
+   text-align:center;
+   
+ }
+
+ 
+

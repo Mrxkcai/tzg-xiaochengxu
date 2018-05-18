@@ -3,6 +3,7 @@
     "login-yan": "/components/login_yan/login_yan",
     "login-dislog":"/components/dialog_modal/dialog_modal",
     "rule-modal": "/components/rule_modal/rule_modal",
-    "customer-modal": "/components/customer_modal/customer_modal"
+    "customer-modal": "/components/customer_modal/customer_modal",
+    "sign-modal": "/components/sign_modal/sign_modal"
   }
 }
