@@ -18,7 +18,7 @@
 }
 /* form表单的样式 */
   .login-form{
-   margin-top:20rpx;
+   margin-top:100rpx;
  } 
  /* 输入手机号和输入验证的样式 */
  .itemView{
@@ -35,9 +35,9 @@
   font-family: PingFangSC-Regular;
   font-size: 30rpx;
   color: #000000;
-  margin-left:10rpx; 
+  margin-left:10.5rpx; 
  }
- .login-yanZ{
+  /* .inputE{
    width: 150rpx;
    height:50rpx;
    display: inline-block;
@@ -49,7 +49,7 @@
    color: #666;
    letter-spacing: 0;
    line-height:30rpx;
- }  
+ }    */
  /* 提交按钮的样式 */
   .loginBtn{
    margin-top:80rpx;

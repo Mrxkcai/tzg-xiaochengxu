@@ -11,7 +11,7 @@
     <view class="itemView">
       <input class="input-phone"  placeholder-style="color:#999;" name="inputYan" placeholder="请输入验证码"  
       bindblur="inputYan" />
-      <login-yan inputPhone="{{inputPhone}}"></login-yan>
+      <login-yan inputPhone="{{inputPhone}}" class="inputE"></login-yan>
     </view>
     <view class="viewName">
       <button class="loginBtn" 
