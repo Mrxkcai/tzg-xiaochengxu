@@ -37,7 +37,6 @@
   font-family: PingFangSC-Regular;
   font-size: 36rpx;
   color: #000000;
-  font-weight: 700;
 }
 /*  0571—88888888 */
 .customerService_content{
