@@ -1,4 +1,4 @@
-<div class="rule_modal" wx:if="{{fail}}"> 
+<div class="rule_modal" wx:if="{{fail}}" animation="{{animationData}}"> 
     <view class="rule_modal_index">
       <view class="rule_div_img">
         <image  class="rule_img" src="{{img}}"></image>

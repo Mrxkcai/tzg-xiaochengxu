@@ -14,6 +14,8 @@ Page({
     inputPhone: "",
     inputYan: "",
     huozheng:"",
+    showModalStatus: false  ,
+    animationData: {}
   },
   onMyEvent: function (e) {
     this.setData({
@@ -72,20 +74,24 @@ Page({
   },
   //提交按钮的函数
   loginBtn: function () {
-    var that = this;
+    var that=this
     console.log(this.data.inputPhone, this.data.inputYan)
     if (this.data.inputPhone.length == 0 ||
       this.data.inputYan.length == 0) {
-      wx.showToast({
-        title: '手机号或验证码错误！',
-        icon: "none",
-        duration: 2000
-      })
+        wx.showToast({
+          title: '手机号或验证码错误！',
+          icon: "none",
+          duration: 2000
+        })
+      // this.setData({
+      //   sumbitShow: !this.data.sumbiShow,
+      //   show: !this.data.show
+      // })
+      // this.onShow()
     } else {
       wx.request({
         url:'https://api.taozugong.com/award/sms/verifyMobile',
         method:'POST',
-        // dataType: 'json',
         data:{
           mobile:this.data.inputPhone,
           authCode:this.data.inputYan,
@@ -97,11 +103,9 @@ Page({
         success:function(res){
           console.log(res.data)
           if(res.data.code==200){
-            
-            console.log(123)
-            // var show = !this.data.show
               that.setData({
-              show: !that.data.show
+               sumbitShow:!that.data.sumbiShow,
+               show: !that.data.show
             })
           }
         }

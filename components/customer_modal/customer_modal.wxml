@@ -1,5 +1,7 @@
 <view> 
-  <div wx:if="{{cancel}}" class="customerService_modal"> 
+  <div wx:if="{{cancel}}"  
+  animation="{{animationData}}"
+  class="customerService_modal"> 
   <view class="customerService_modal_index">
      <view class="customerService_top">
        <view class="customerService_title">

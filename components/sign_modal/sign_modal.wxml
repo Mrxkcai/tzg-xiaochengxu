@@ -1,8 +1,11 @@
+<!-- wx:if="{{signFail}}"  -->
 <view>
-  <div   
-    wx:if="{{signFail}}" 
-    class="sign_modal"> 
-    <image class="sign_modal_index" src="{{ims}}">
+  <div
+    wx:if="{{signFail}}"
+    class="sign_modal"
+    animation="{{animationData}}" > 
+    <image class="sign_modal_index" 
+      src="{{ims}}">
       <view class="sign_title">
           <view class="sign_con">已连续签到
             <span class="sign_day">5</span>天
@@ -29,7 +32,7 @@
         <image class="sign_image"  src="{{imgs1}}"></image>
       </view>
     <view class="sign_modal_circle" >
-      <view class="sign_circle" bindtap='signClose'>
+      <view class="sign_circle" bindtap='signClose' data-id="close">
         <span class="sign_fail">x</span> 
       </view>
     </view> 

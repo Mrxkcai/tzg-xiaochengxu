@@ -21,10 +21,9 @@
       </button>
     </view>
   </view>
-  <login-dislog wx:if="{{show}}"></login-dislog>
-    <!-- <login-dislog></login-dislog> -->
-     <!-- <rule-modal></rule-modal>    -->
-   <!-- <customer-modal></customer-modal>  -->
-         <!-- <sign-modal></sign-modal> -->
+   <login-dislog wx:if="{{show}}"></login-dislog> 
+         <!-- <rule-modal></rule-modal>-->
+         <!-- <customer-modal></customer-modal> -->
+         <!--<sign-modal></sign-modal>-->
 </block>
 
