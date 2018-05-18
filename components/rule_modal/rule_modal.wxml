@@ -9,21 +9,23 @@
       <view class="rule_ul">
         <view class="rule_li">
           <view class="rule_span">
-            <span class="rule_span_rules"></span>
+            <span class="rule_span_rule"></span>
           </view>
-          <view class="rule_view">每天签到领到的积分，消耗不等量积分 可获得不同商品的抽奖机会</view>
+          <view class="rule_view">每天签到领到的积分，消耗不等量积分 可获得不同商品的抽奖机会。</view>
         </view>
         <view class="rule_li">
           <view class="rule_span">
-            <span class="rule_span_rules"></span>
+            <span class="rule_span_rule"></span>
           </view>
-          <view class="rule_view">中奖者我们会通过客服电话与您联系，并在第一时间送出您的奖品</view>
+          <view class="rule_view">中奖者我们会通过客服电话与您联系，并在第一时间送出您的奖品。</view>
         </view>
         <view class="rule_li">
           <view class="rule_span">
-            <span class="rule_span_rules"></span>
+            <span class="rule_span_rule" style="margin-top:30rpx"></span>
           </view>
-          <view class="rule_view">活动解释权归淘租公所有</view>
+          <view class="rule_view" >
+          活动解释权归淘租公所有。
+          </view>
         </view>
       </view>
       <view class="rule_bottom">
@@ -33,7 +35,6 @@
     <view class="rule_modal_circle" >
       <view class="cure_circle" bindtap='ruleClose'>
          <span class="rule_fail">x</span> 
-        x
       </view>
     </view>
   </div>  
