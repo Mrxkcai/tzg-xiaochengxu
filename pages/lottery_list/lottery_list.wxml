@@ -9,17 +9,18 @@
     </form> -->
 
     <view class="user-center">
-      <image class="icon" src="/images/logo.png" mode="widthFix"></image>
+      <image class="icon" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
       <view class="user-message">
         <view>
-          <view class="name">谢春花</view>
-          <view class="gray-button">已绑定手机号</view>
+          <view class="login" wx:if="{{!tzgUserInfo}}">点击登录</view> 
+          <view class="name">{{userInfo.nickName}}</view>
+          <view class="gray-button" bindtap='toLogin'>{{tzgUserInfo.mobile?'已绑定手机号':'绑定手机号'}}</view>  
         </view>
         <view style="text-align:right">
           <view class="score-title">累计积分</view>
           <view class="score">
-            <image src="/images/score.png" mode="widthFix"></image>
-            2370
+            <image src="/images/score.png" mode="widthFix" bindtap='sign'></image>
+            {{tzgUserInfo.integral}}
           </view>
         </view> 
       </view>  
@@ -42,11 +43,12 @@
     </view>
 
     <view wx:for="{{awardList}}" wx:key="{{item}}">
-       <prize-info prize-info="{{item}}">
+       <prize-info prize-info="{{item}}" bind:joinAward="joinAward">
        </prize-info> 
     </view>
   </view> 
   
   <win-modal win-tip="{{winTip}}" id="winModal"></win-modal>
   <lose-modal lose-tip="{{loseTip}}" id="loseModal"></lose-modal>
+  <sign-modal sign-tip="{{tzgUserInfo}}" id="signModal"></sign-modal>
 </view>
