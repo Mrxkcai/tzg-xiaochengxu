@@ -21,7 +21,7 @@
         </view>
         <view class="rule_li">
           <view class="rule_span">
-            <span class="rule_span_rule" style="margin-top:30rpx"></span>
+            <span class="rule_span_rule"></span>
           </view>
           <view class="rule_view" >
           活动解释权归淘租公所有。
