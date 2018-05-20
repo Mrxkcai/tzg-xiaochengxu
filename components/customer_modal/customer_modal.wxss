@@ -9,6 +9,7 @@
   left:0rpx;
   z-index:99
 }
+/*对话框  */
 .customerService_modal_index{
    width:560rpx;
    height: 291rpx;
@@ -17,11 +18,13 @@
    margin-top:462rpx;
    border-radius: 8px;
 }
+/*头部  */
 .customerService_top{
   width:100%;
   height:190rpx;
   border-bottom: 1px solid  #E5E5E5;
 }
+/*客服电话 */
 .customerService_title{
   display: inline-block;
   width:100%;
@@ -34,8 +37,8 @@
   font-family: PingFangSC-Regular;
   font-size: 36rpx;
   color: #000000;
-  font-weight: 700;
 }
+/*  0571—88888888 */
 .customerService_content{
   display: inline-block;
   width:100%;
@@ -50,6 +53,7 @@
   color: #888888;
   text-align: center;
 }
+/*底部的*/
 .customerService_bot{
   display: inline-block;
   width:100%;
@@ -62,6 +66,7 @@
   border-right:1px solid #E5E5E5;
   text-align: center;
 }
+/*取消*/
 .customerService_cancle{
   font-family: PingFangSC-Regular;
   font-size: 36rpx;

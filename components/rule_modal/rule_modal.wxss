@@ -5,8 +5,10 @@
   position:fixed;
   top:0rpx;
   left:0rpx;
-  z-index:99
+  z-index:99;
+  
 }
+/*对话框  */
 .rule_modal_index{ 
    margin-top:365rpx;
    width:530rpx;
@@ -15,6 +17,7 @@
    border-radius: 14rpx;
    margin-left:117rpx;
  } 
+ /*top的logo  */
  .rule_div_img{
    width:100%;
    text-align: center;
@@ -24,6 +27,7 @@
    height:126rpx;
    margin-top:-63rpx;
  }
+ /*活动规则这一行的样式  */
  .rule_title{
    width:100%;
    height:110rpx;
@@ -35,43 +39,49 @@
    color: #333333;
    font-weight: 700;
  }
+ /*活动的内容  */
  .rule_ul{
    width:100%;
   
  }
+ /*每一条的内容样式  */
  .rule_li{
     margin:0 30rpx;
     width:471rpx;
     height:84rpx;
-    text-align: left; 
+    /* text-align: left;  */
     margin-bottom:30rpx;
  }
+ /*圆圈的样式  */
  .rule_span{
-   display: inline-block;
+    display: inline-block; 
    float: left;
-   text-align: center;
+   /* text-align: center; */
    width:20rpx;
-   height:37rpx;
+   height:84rpx;
+   margin-top:-9rpx;
  }
- .rule_span_rules{
+ .rule_span_rule{
    display: inline-block;
    width:20rpx;
    height:20rpx;
-   margin-top:9rpx;
+    /* margin-top:12rpx;    */
    background: #EE6643;
    border-radius: 50%;
  }
+ /*圆圈右面文字的样式  */
  .rule_view{
-   float: left;
+   /* float: left; */
    display: inline-block;
-   margin-left:21rpx;
+   margin-left:20rpx;
    width:429rpx;
    font-family: PingFangSC-Regular;
    font-size: 26rpx;
    color: #333333;
    text-align: left;
-   line-height: 40rpx;
+   line-height: 42rpx;
  }
+ /*下面的错误符号  */
  .rule_bottom{
    width:100%;
    height:53rpx;
@@ -88,7 +98,7 @@
    display: inline-block;
    width:77rpx;
    height:77rpx;
-   border:1px solid #fff;
+   border:2px solid #fff;
    border-radius: 50%;
  }
  .rule_fail{
