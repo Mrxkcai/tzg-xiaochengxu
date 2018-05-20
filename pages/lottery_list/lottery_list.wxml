@@ -9,18 +9,18 @@
     </form> -->
 
     <view class="user-center">
-      <image class="icon" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+      <image class="icon" src="{{tzgUserInfo.avatarUrl?userInfo.avatarUrl:'/images/logo.png'}}" mode="widthFix"></image>
       <view class="user-message">
         <view>
-          <view class="login" wx:if="{{!tzgUserInfo}}">点击登录</view> 
-          <view class="name">{{userInfo.nickName}}</view>
-          <view class="gray-button" bindtap='toLogin'>{{tzgUserInfo.mobile?'已绑定手机号':'绑定手机号'}}</view>  
+          <view class="login" wx:if="{{!tzgUserInfo}}" bindtap='toLogin'>点击登录</view> 
+          <view class="name" wx:if="{{tzgUserInfo}}">{{userInfo.nickName}}</view>
+          <view class="gray-button" bindtap='bindPhone' wx:if="{{tzgUserInfo}}">{{tzgUserInfo.mobile?'已绑定手机号':'绑定手机号'}}</view>  
         </view>
         <view style="text-align:right">
           <view class="score-title">累计积分</view>
           <view class="score">
-            <image src="/images/score.png" mode="widthFix" bindtap='sign'></image>
-            {{tzgUserInfo.integral}}
+            <image src="/images/score.png" mode="widthFix"></image>
+            {{tzgUserInfo.integral || 0}}
           </view>
         </view> 
       </view>  
@@ -29,7 +29,7 @@
       <image class="black_bar" src="/images/black_bar.png" mode="widthFix"></image>
       <view class="sign-tip">
         <image src="/images/bell.png" mode="widthFix"></image>
-        <text class="tip">明天记得来哦，连续签到可得<text class="small-score">30</text>积分</text>
+        <text class="tip">明天记得来哦，连续签到可得<text class="small-score">35</text>积分</text>
       </view>
     </view>
   </view> 

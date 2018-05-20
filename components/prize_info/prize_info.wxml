@@ -30,7 +30,7 @@
           <form report-submit="true" bindsubmit="joinAward">
         
             <!-- 抽奖倒计时 0-->
-            <button wx:if="{{prizeInfo.status == 0}}" class="prize-button orage-solid-button">参与抽奖</button>
+            <button wx:if="{{prizeInfo.status == 0}}" class="prize-button orage-solid-button">倒计时{{countdown}}</button>
 
             <!-- 抽奖进行中 1-->
             <button wx:elif="{{prizeInfo.status == 1}}" class="prize-button orage-solid-button" formType="submit" data-id="{{prizeInfo.awardId}}">参与抽奖</button>
