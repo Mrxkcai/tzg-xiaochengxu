@@ -3,6 +3,8 @@
     "prize-info": "/components/prize_info/prize_info",
     "win-modal": "/components/win_modal/win_modal",
     "lose-modal": "/components/lose_modal/lose_modal",
-    "sign-modal": "/components/sign_modal/sign_modal"
+    "sign-modal": "/components/sign_modal/sign_modal",
+    "rule-modal": "/components/rule_modal/rule_modal",
+    "customer-modal": "/components/customer_modal/customer_modal"
   }
 }

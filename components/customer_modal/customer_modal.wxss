@@ -1,4 +1,3 @@
-/* components/customer_modal/customer_modal.wxss */
 .customerService_modal{
   display:inline-block;
   background: rgba(0,0,0,0.5);
@@ -7,7 +6,8 @@
   position:fixed;
   top:0rpx;
   left:0rpx;
-  z-index:99
+  z-index:99;
+  opacity: 0;
 }
 /*对话框  */
 .customerService_modal_index{
@@ -15,8 +15,8 @@
    height: 291rpx;
    background:#fff;
    margin:0 95rpx; 
-   margin-top:462rpx;
-   border-radius: 8px;
+   margin-top:330rpx;
+   border-radius: 8rpx;
 }
 /*头部  */
 .customerService_top{
@@ -62,7 +62,7 @@
 .customerService_tie{
   float: left; 
   width:49%;
-  height:100rpx;
+  height:99rpx;
   border-right:1px solid #E5E5E5;
   text-align: center;
 }

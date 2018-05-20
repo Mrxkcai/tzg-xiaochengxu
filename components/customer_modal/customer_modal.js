@@ -2,29 +2,42 @@ Component({
   options:{
     multipleSlots: true 
   },
+  properties: {
+    comfirmTip: {
+      type: Object,
+      value: {}
+    }
+  },
   data:{
-    cancel: true
+    show: false,
+    animationData: ''
   },
   methods:{
-    serverCancel: function () {
+    serverOpen() {
+      this.setData({
+        show: true
+      })
       var animation = wx.createAnimation({
-        duration: 1000,
+        duration: 200,
         timingFunction: 'ease',
       })
       this.animation = animation
-      animation.opacity(0).step()
+      animation.opacity(1).step()
       this.setData({
-        animationData: animation.export()
+        animationData: animation.export(),
       })
-      setTimeout(function () {
-        animation.opacity(0).step()
+    },
+    serverCancel() {
+      this.animation.opacity(0).step()
+      this.setData({
+        animationData: this.animation.export()
+      })
+
+      setTimeout(()=>{
         this.setData({
-          animationData: animation.export()
+          show: false
         })
-      }.bind(this), 1000)
-      // this.setData({
-      //   cancel: !this.data.cancel
-      // })
+      }, 200)
     },
   }
 })

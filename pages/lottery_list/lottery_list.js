@@ -12,6 +12,12 @@ Page({
       contentList: ['请确保绑定好手机号，客服会第一时间联系你', '你也可以主动联系客服']
     },
     loseTip: '好可惜，差点就中了呢，再试试吧',
+    comfirmTip: {
+      title: '客服电话',
+      context: '0571-8888888',
+      leftButton: '取消',
+      rightButton: '拨打'
+    },
     awardList: [
       {
         awardId: 1,
@@ -121,6 +127,8 @@ Page({
     this.winModal = this.selectComponent('#winModal')
     this.loseModal = this.selectComponent('#loseModal')
     this.signModal = this.selectComponent('#signModal')
+    this.customerModal = this.selectComponent('#customerModal')
+    
 
     if (app.globalData.userInfo) {
       this.setData({
@@ -305,5 +313,8 @@ Page({
     wx.navigateTo({
       url: '/pages/login/login'
     })
+  },
+  serverTap() {
+    this.customerModal.serverOpen()
   }
 })

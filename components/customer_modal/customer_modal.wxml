@@ -1,25 +1,23 @@
 <view> 
-  <div wx:if="{{cancel}}"  
+  <div wx:if="{{show}}"  
   animation="{{animationData}}"
   class="customerService_modal"> 
   <view class="customerService_modal_index">
      <view class="customerService_top">
        <view class="customerService_title">
-         <span class="customerService_people">联系客服</span>
+         <span class="customerService_people">{{comfirmTip.title}}</span>
        </view>
        <view class="customerService_content">
-         <span class="customerService_tel">0571-8888888</span>
+         <span class="customerService_tel">{{comfirmTip.context}}</span>
        </view> 
      </view>
      <div class="customerService_bot">
-        <view class="customerService_tie">
-          <text class="customerService_cancle"
-           bindtap="serverCancel">取消</text>
+        <view class="customerService_tie" bindtap="serverCancel">
+          <text class="customerService_cancle">{{comfirmTip.leftButton}}</text>
         </view>
-        <view class="customerService_tie" style="border-right:0">
+        <view class="customerService_tie" style="border-right:0" bindtap="serverCall">
           <text class="customerService_cancle" 
-          style="color: #EA5739;" 
-          bindtap="serverCall">拨打</text>
+          style="color: #EA5739;">{{comfirmTip.rightButton}}</text>
         </view>   
      </div> 
    </view>

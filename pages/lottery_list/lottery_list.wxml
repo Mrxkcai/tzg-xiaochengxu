@@ -39,7 +39,7 @@
         <text>积分抽奖</text> 
         <image src="/images/quest.png" mode="widthFix" class="quest" bindtap='openModal'></image>
       </view>
-      <image src="/images/server.png" mode="widthFix" class="server"></image> 
+      <image src="/images/server.png" mode="widthFix" class="server" bindtap='serverTap'></image> 
     </view>
 
     <view wx:for="{{awardList}}" wx:key="{{item}}">
@@ -51,4 +51,6 @@
   <win-modal win-tip="{{winTip}}" id="winModal"></win-modal>
   <lose-modal lose-tip="{{loseTip}}" id="loseModal"></lose-modal>
   <sign-modal sign-tip="{{tzgUserInfo}}" id="signModal"></sign-modal>
+  <rule-modal></rule-modal> 
+  <customer-modal comfirm-tip="{{comfirmTip}}" id="customerModal"></customer-modal>
 </view>
