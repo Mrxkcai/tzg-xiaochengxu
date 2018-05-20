@@ -19,12 +19,14 @@
   display: flex;
   justify-content: space-between;
   margin-left: 24rpx;
+  align-items: center;   
 }
 .user-message .name {
   font-family: 'PingFangSC-Regular';
   font-size: 36rpx;
   color: #333333;
   letter-spacing: -0px;
+  line-height: 40rpx;
 }
 
 .gray-button {
@@ -36,7 +38,7 @@
   border: 1px solid #999999;
   border-radius: 10rpx;
   padding: 0rpx 13rpx;
-  margin-top: 15rpx;
+  margin-top: 22rpx;
 }
 
 .score-title {
@@ -44,6 +46,8 @@
   font-size: 24rpx;
   color: #333333;
   letter-spacing: -0rpx;
+  line-height: 26rpx;
+  padding-top: 10rpx;
 }
 
 .score {
@@ -51,7 +55,8 @@
   font-size: 48rpx;
   color: #F3654C;
   letter-spacing: -0rpx;
-  margin-top: 15rpx;
+  margin-top: 22rpx;
+  line-height: 50rpx;
 }
 
 .score image {
@@ -111,7 +116,7 @@
   font-size: 32rpx;
   color: #333333;
   text-align: left;
-  line-height: 32rpx;
+  line-height: 30rpx;
 }
 .tip-bar .quest {
   width: 32rpx;
@@ -121,4 +126,12 @@
 
 .tip-bar .server {
   width: 40rpx;
+}
+
+.login {
+  font-family: PingFangSC-Regular;
+  font-size: 36rpx;
+  color: #333333;
+  letter-spacing: -0px;
+  text-align: center;
 }

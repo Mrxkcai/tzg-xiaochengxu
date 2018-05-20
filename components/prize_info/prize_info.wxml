@@ -2,9 +2,9 @@
   <text class="circular-left"></text>
   <text class="circular-right"></text>
   <view class="prize-body">
-   <view class="lottery-status-orange" wx:if="{{prizeInfo.status==1}}">抽奖倒计时</view>  
-   <view class="lottery-status-orange" wx:elif="{{prizeInfo.status==2}}">抽奖倒计时</view>  
-   <view class="lottery-status-gary" wx:elif="{{prizeInfo.status==3}}">抽奖结束</view>   
+   <view class="lottery-status-orange" wx:if="{{prizeInfo.status==0}}">抽奖倒计时</view>  
+   <view class="lottery-status-orange" wx:elif="{{prizeInfo.status==1}}">抽奖进行中</view>  
+   <view class="lottery-status-gary" wx:elif="{{prizeInfo.status==2}}">抽奖结束</view>   
     <view class="prize-top">
       <image src="{{prizeInfo.productPic}}" mode="widthFix" class="cover"></image>
       <view style="width:386rpx">
@@ -17,17 +17,29 @@
           <text class="money-label">￥</text>
           <text class="prize-price">{{prizeInfo.priceSnapshot}}</text>
         </view>
-        <view class="prize-date">
-          <text style="margin-right:20rpx">{{prizeInfo.startTime}}</text>
-          <text>自动开奖</text>
+        <view class="{{prizeInfo.status==2?'prize-date-delete':'prize-date'}}">
+          <text>{{prizeInfo.startTime}}</text><text> 自动开奖</text>
         </view>
       </view>
     </view>
     <view class="prize-footer">
-        <button class="prize-button {{prizeInfo.status==1?'orage-plain-button':'gary-plain-button'}}" hover-class="orage-solid-button" open-type="share">分享好友</button>
+        <button wx:if="{{prizeInfo.status==2}}" class="prize-button gary-plain-button">分享好友</button>
+        <button wx:else class="prize-button orage-plain-button" hover-class="orage-solid-button" open-type="share">分享好友</button>
+
         <view class="prize-right-button">
-          <button class="prize-button {{prizeInfo.status==1?'orage-solid-button':'gary-solid-button'}}">参与抽奖</button>
-          <image wx:if="{{prizeInfo.status==2}}" src="{{prizeInfo.isWinning?'/images/win.png':'/images/lose.png'}}" mode="widthFix" class="prize-tag"></image>  
+          <form report-submit="true" bindsubmit="joinAward">
+        
+            <!-- 抽奖倒计时 0-->
+            <button wx:if="{{prizeInfo.status == 0}}" class="prize-button orage-solid-button">参与抽奖</button>
+
+            <!-- 抽奖进行中 1-->
+            <button wx:elif="{{prizeInfo.status == 1}}" class="prize-button orage-solid-button" formType="submit" data-id="{{prizeInfo.awardId}}">参与抽奖</button>
+
+            <!-- 抽奖结束 2-->
+            <button wx:elif="{{prizeInfo.status == 2}}" class="prize-button gary-solid-button}}">{{(prizeInfo.status!=2 || prizeInfo.isParticipated)?'参与抽奖':'未参与抽奖'}}</button>
+          </form>
+          
+          <image wx:if="{{prizeInfo.status==2 && prizeInfo.isParticipated}}" src="{{prizeInfo.isWinning?'/images/win.png':'/images/lose.png'}}" mode="widthFix" class="prize-tag"></image>  
         </view> 
     </view>
   </view>

@@ -1,7 +1,9 @@
-const openId = getApp().globalData.openId
+const app = getApp()
 const baseUrl = getApp().globalData.baseUrl
 Page({
   data: {
+    tzgUserInfo: '',
+    userInfo: '',
     winVisible: false,
     winTip: {
       title: '恭喜你抽中了雅萌瘦脸射频美颜仪',
@@ -11,11 +13,11 @@ Page({
     awardList: [
       {
         awardId: 1,
-        isClosed: false,//是否关闭
+        // isClosed: false,//是否关闭
         awardType: 1,//抽奖类型
         isParticipated: false, //是否参与
         isWinning: false,//是否中奖
-        status: 1,//开奖状态 1未开 2抽奖中 3结束
+        status: 0,//开奖状态 0未开 1抽奖中 2结束
 
         shareLink: '',//分享链接
         productPic: 'http://img.taozugong.com/product/2018-05-04/88d8afabfDm8jS@!p_mass_90_size_750',
@@ -28,7 +30,6 @@ Page({
       },
       {
         "awardId": 8,
-        "isClosed": false,
         "productPic": 'http://img.taozugong.com/product/2018-05-04/88d8afabfDm8jS@!p_mass_90_size_750',
         "productTitle": "测试商品标题",
         "productDesc": "测试商品描述",
@@ -40,7 +41,7 @@ Page({
         "isParticipated": true,
         "isWinning": false,
         "shareLink": null,
-        "status": 2
+        "status": 1
       },
       {
         "awardId": 8,
@@ -56,7 +57,7 @@ Page({
         "isParticipated": true,
         "isWinning": true,
         "shareLink": null,
-        "status": 3
+        "status": 2
       },
       {
         "awardId": 9,
@@ -72,7 +73,7 @@ Page({
         "isParticipated": true,
         "isWinning": false,
         "shareLink": null,
-        "status": 3
+        "status": 2
       },
       {
         "awardId": 9,
@@ -85,37 +86,59 @@ Page({
         "startTime": "05-18 02:10",
         "endTime": "2018-05-18 02:10:01",
         "awardType": 1,
-        "isParticipated": true,
+        "isParticipated": false,
         "isWinning": false,
         "shareLink": null,
-        "status": 3
+        "status": 2
       },
     ],
     winModal: '',
-    loseModal: ''
+    loseModal: '',
+    signModal: '',
+    canIUse: wx.canIUse('button.open-type.getUserInfo')  
   },
   onLoad(options) {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回  
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          tzgUserInfo: app.globalData.tzgUserInfo
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理  
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })  
+    }  
+    
     this.getAwardList()
-    // this.getAuthCode()
   },
   onReady() {
     this.winModal = this.selectComponent('#winModal')
     this.loseModal = this.selectComponent('#loseModal')
+    this.signModal = this.selectComponent('#signModal')
   },
   onShow() {
-  
   },
   onHide() {
-  
   },
   onUnload() {
-  
   },
   onPullDownRefresh() {
-  
   },
   onReachBottom() {
-  
   },
   onShareAppMessage(res) {
     if (res.from === 'button') {
@@ -125,29 +148,8 @@ Page({
     return {
       title: '推荐淘租公给你，和我一起抽奖吧',
       imageUrl: '/images/logo.png',
-      path: ''
+      path: '/pages/lottery_list/lottery_list'
     }
-  },
-  getAuthCode() {
-    wx.request({
-      url: baseUrl + '/sms/verifyMobile',
-      method: 'POST',
-      data: {
-        openId: '111',
-        mobile: '15276287105',
-        authCode: '1234',
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
-      },
-      success: (res) => {
-        if (res.data.code == 200) {
-          this.setData({
-            // awardList: res.data.data.dataList
-          })
-        }
-      }
-    })
   },
   getAwardList() {
     wx.request({
@@ -178,15 +180,15 @@ Page({
   onGotUserInfo(res) {
     console.log(res)
   },
-  joinAward() {
+  joinAward(e) {
     wx.request({
       url: baseUrl + '/userAward/joinAward',
       method: 'POST',
       data: {
-        openId: '111',
-        id: 1,
-        formId: 10,
-        pageUrl: 'lottery_list'
+        openId: app.globalData.openId,
+        id: e.detail.target.dataset.id,
+        formId: e.detail.formId,
+        pageUrl: '/pages/lottery_list/lottery_list'
       },
       header: {
         'content-type': 'application/json' // 默认值
@@ -197,25 +199,12 @@ Page({
       }
     })
   },
-  login() {
-    wx.request({
-      url: baseUrl + '/user/login',
-      method: 'GET',
-      data: {
-        code: '',
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: (res) => {
-        if (res.data.code == 200) {
-          this.setData({
-          })
-        }
-      }
+  toLogin() {
+    wx.navigateTo({
+      url: '/pages/login/login'
     })
   },
-  formSubmit(e) {
-    console.log(e)
+  sign() {
+    this.signModal.signOpen()
   }
 })

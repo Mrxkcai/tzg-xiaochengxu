@@ -1,37 +1,22 @@
-<view>
-  <div   
-    wx:if="{{signFail}}" 
-    class="sign_modal"> 
-    <image class="sign_modal_index" src="{{ims}}">
-      <view class="sign_title">
-          <view class="sign_con">已连续签到
-            <span class="sign_day">5</span>天
+<view bindtap='signClose' >
+  <view wx:if="{{signFail}}" class="sign_modal" animation="{{animModalData}}">
+    <view class="sign-body">
+      <image class="sign_modal_index" src="{{ims}}" mode="widthFix">
+       <image class="sign_image" src="{{imgs1}}" mode="widthFix"></image> 
+        <view class="sign_title">已连续签到<text class="sign_day">{{signTip.continueDay}}</text>天</view>
+        <view class="sign_center">
+          <image class="sign_center_img" src="{{quan}}" mode="widthFix"></image>
+          <text class="sign_center_add">+</text>
+          <text class="sign_cneter_num">{{signTip.toDayIntegral}}</text>
+        </view>
+        <view class="sign_content"><text class="sign_content_title">连续签到，积分增长更快哦</text></view>
+        <view class="sign_bottom">
+          <view class="sign_bottom_left">去抽奖
+            <text class="sign-arrow"><text class="sign_bottom_right"></text></text>
           </view>
-      </view>
-      <view class="sign_center">
-        <view class="sign_center_left">
-          <image  class="sign_center_img" src="{{quan}}"></image>
         </view>
-        <view class="sign_center_add">+
-          <span class="sign_cneter_num">30</span>
-        </view>
-      </view>
-      <view class="sign_content">
-        <view class="sign_content_title">连续签到，积分增长更快哦</view>
-      </view>
-      <view class="sign_bottom">
-        <view class="sign_bottom_left">去抽奖
-          <span class="sign_bottom_right">></span>
-        </view>
-      </view>
-    </image>
-     <view class="sign_top">
-        <image class="sign_image"  src="{{imgs1}}"></image>
-      </view>
-    <view class="sign_modal_circle" >
-      <view class="sign_circle" bindtap='signClose'>
-        <span class="sign_fail">x</span> 
-      </view>
-    </view> 
-  </div>
+      </image>
+      <image src="/images/close.png" mode="widthFix" class="close"></image>
+    </view>
+  </view>
 </view>
