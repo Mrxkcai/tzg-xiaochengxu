@@ -1,37 +1,48 @@
-//index.js
-//获取应用实例
 Component({
   options:{
     multipleSlots: true
+  },
+  properties: {
+    signTip: {
+      type: Object,
+      value: {}
+    }
   },
   data:{
     ims: "../../images/sign_back.png",
     imgs1: "../../images/sign.png",
     quan: "../../images/gary_score.png",
-    signFail: true,
-    animationData: {}
+    signFail: false,
+    animModalData: ''
   },
   methods:{
-    signClose: function () {
-      var animation = wx.createAnimation({
-        duration: 1000,
-        timingFunction: 'ease',
-      })
-      this.animation = animation
-      animation.opacity(0).step()
+    signOpen() {
       this.setData({
-        animationData: animation.export()
-      })
-      setTimeout(function () {
-        animation.opacity(0).step()
+        signFail: true
+      });
+      const animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: 'cubic-bezier(.55, 0, .55, .2)',
+      });
+
+      this.maskAnim = animation;
+
+      animation.opacity(1).step();
+      this.setData({
+        animModalData: animation.export(),
+      });
+    },
+    signClose() {
+      this.maskAnim.opacity(0).step();
+      this.setData({
+        animModalData: this.maskAnim.export(),
+      });
+
+      setTimeout(()=>{
         this.setData({
-          animationData: animation.export()
+          signFail: false
         })
-      }.bind(this), 1000)
-      // console.log(123)
-      // this.setData({
-      //   signFail: !this.data.signFail
-      // })
+      }, 200)
     }
   }
 })

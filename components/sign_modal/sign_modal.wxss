@@ -1,152 +1,121 @@
-/**index.wxss**/
 .sign_modal{
-  display:inline-block;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,.5);
   width:100%;
-  height:1344rpx; 
+  height:100%; 
   position:fixed;
-  top:0rpx;
-  left:0rpx; 
-  z-index:99;
+  top:0;
+  left:0; 
+  z-index: 100;
+  opacity: 0; 
+}
+.sign-body {
+  position: absolute;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 /* 图片的定位 */
 .sign_modal_index{
    width:460rpx;
-   height: 540.6rpx;
-   margin:0 145rpx; 
-   margin-top:386.4rpx;
-   border-radius: 8px;
-   position: relative;
-}
-/* 奖牌的定位*/
-.sign_top{
-  width:180.6rpx;
-  position:absolute;
-  top:302.4rpx;
-  left:285.2rpx;
-  text-align: center;
-
+   border-radius: 10rpx;
 }
 .sign_image{
-  width:202.6rpx;
-  height:179.6rpx;
+  width:250rpx;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -45%);
 }
-/* 已连接的样式 */
 .sign_title{
-  width:354.4rpx;
-  height:75rpx;
-  /* margin-bottom:23.2rpx; */
+  width: 100%;
+  margin-bottom:23.2rpx;
   position:absolute;
-  top:125.6rpx;
-  left:53rpx;
+  top:130rpx;
   text-align: center;
-}
-.sign_con{
-  /* padding-top:23rpx; */
-  /* padding-bottom:25rpx; */
-  display: inline-block;
-  font-family: PingFangSC-Regular;
   font-size: 36rpx;
-  line-height: 75rpx;
+  font-family: PingFangSC-Regular;
   color: #EAE7E7;
 }
 .sign_day{
-  font-size:50rpx;
-  font-weight: 700;
+  font-size:52rpx;
+  font-family: PingFangSC-Medium;
+  color: #fff;
 }
 /*图片 +30这一行样式  */
 .sign_center{
-  height: 76rpx;
-  /* width:160rpx; */
-  width:262rpx;
+  width: 100%;
+  text-align: center;
   position: absolute;
   top:224.9rpx;
-  left:142.2rpx;
-  
 }
 .sign_center_left{
-   float: left;
    height: 76.5rpx;
    width:46.3rpx;
 }
 .sign_center_img{
-  display: inline-block;
-  width:50rpx;
-  height:46.2rpx;
-  vertical-align: middle;
-  margin-top:15rpx;
+  width:46rpx;
 }
 .sign_center_add{
-  margin-left:17.3rpx;
-  float: left;
-  /* display: inline-block; */
-  width:200rpx;
-  height:67rpx;
+   margin: 0 17rpx; 
   font-family: PingFangSC-Regular;
   font-size: 48rpx;
   color: #FFFFFF;
-  
+  display: inline-block;
+  vertical-align: top;
 }
 .sign_cneter_num{
-  display: inline-block;
   font-family: PingFangSC-Medium;
   font-size: 52rpx;
   color: #FFFFFF;
-  text-align: center;
 }
 /* 增长积分更快的这一行的样式 */
 .sign_content{
   position: absolute;
-  left:56rpx;
-  right:56rpx;
-  top:306.6rpx;
-  width:348rpx;
-  height:40rpx;
-  background: #fff;
-  margin-top:14.7rpx;
+  top:308rpx;
+  text-align: center;
+  width: 100%;
 }
 .sign_content_title{
+  padding: 3rpx 20rpx;
+  background: #fff; 
   font-family: PingFangSC-Regular;
   font-size: 26rpx;
   color: #999999;
-  text-align: center;
-  line-height: 40rpx;
 }
 /*去抽奖按钮这样的样式  */
 .sign_bottom{
-  width:354.4rpx;
-  height:75rpx;
-  background: #FFE326;
-  border-radius: 100px;
+  width: 100%;
   position: absolute;
-  left:53rpx;
-  right:53rpx;
-  top:406.6rpx;
+  top:407rpx;
+  text-align: center;
 }
 .sign_bottom_left{
+  display: inline-block;
+  background: #FFE326;
+  border-radius: 100rpx; 
   font-family: PingFangSC-Regular;
   font-size: 40rpx;
-  line-height: 75rpx;
   color: #B82E15;
   text-align: center; 
+  width: 354rpx;
+  padding: 10rpx 0;
 }
  .sign_bottom_right{
    margin-left:15.7rpx;
-   color:#B82E15;
-   font-size: 50rpx;
-   font-weight: 700;
+   width: 29rpx;
+   height: 32rpx;
+   border-top: 2px solid #B82E15;
+   border-right: 2px solid #B82E15;
+   display: inline-block;
+  transform: skewY(-25deg);
  }
- /*下面的错误符合的样式  */
+.sign-arrow {
+   transform: rotate(56deg);   
+  display: inline-block;
+}
  .sign_modal_circle{
    margin-top:60rpx;
    text-align: center;
- }
- .sign_circle{
-   display: inline-block;
-   width:77rpx;
-   height:77rpx;
-   border:2px solid #fff;
-   border-radius: 50%;
  }
  .sign_fail{
    display:inline_block;
@@ -156,8 +125,12 @@
    line-height: 62rpx;
    vertical-align: middle;
    text-align:center;
-   
  }
-
- 
+ .close {
+  width: 77rpx;
+  bottom: -137rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+ }
 

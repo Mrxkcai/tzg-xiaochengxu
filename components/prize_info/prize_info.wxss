@@ -52,6 +52,13 @@
   margin-top: 30rpx;
   line-height: 30rpx;
 }
+.prize-date-delete {
+  font-size: 22rpx;
+  color: #ccc;
+  margin-top: 30rpx;
+  line-height: 30rpx;
+  text-decoration: line-through;
+}
 .prize-footer {
  margin-top: 40rpx;
 }
@@ -59,8 +66,10 @@
   font-size: 28rpx;
   border-radius: 10rpx;
   display: inline-block;
-  padding: 15rpx 75rpx;
+  /* padding: 15rpx 75rpx; */
   line-height: 40rpx;
+  padding: 15rpx 0;
+  width: 260rpx;
 }
 
 .orage-plain-button {
