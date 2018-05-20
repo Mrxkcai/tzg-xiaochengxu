@@ -6,16 +6,21 @@
   top:0rpx;
   left:0rpx;
   z-index:99;
-  
+  text-align:center;
+}
+.rule_index{
+  /* text-align: center; */
+  width:100%;
+  /* margin: 0 auto; */
 }
 /*对话框  */
 .rule_modal_index{ 
    margin-top:365rpx;
    width:530rpx;
-   height: 551rpx;
    background:#fff;
    border-radius: 14rpx;
-   margin-left:117rpx;
+    margin-left:117rpx; 
+   
  } 
  /*top的logo  */
  .rule_div_img{
@@ -30,7 +35,6 @@
  /*活动规则这一行的样式  */
  .rule_title{
    width:100%;
-   height:110rpx;
    text-align: center;
  }
  .h1{
@@ -99,16 +103,6 @@
    display: inline-block;
    width:77rpx;
    height:77rpx;
-   border-radius: 50%;
  }
- .rule_fail{
-   display:inline_block;
-   color:#fff;
-   font-weight:100;
-   font-size:77rpx;
-   line-height: 62rpx;
-   vertical-align: middle;
-   text-align:center;
-   
- }
+ 
  
