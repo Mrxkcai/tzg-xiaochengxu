@@ -29,11 +29,11 @@ Page({
 
         shareLink: '',//分享链接
         productPic: 'http://img.taozugong.com/product/2018-05-04/88d8afabfDm8jS@!p_mass_90_size_750',
-        productTitle: 'Apple iPhone8 全网通4G手机亮色32G',
+        productTitle: 'Apple iPhone8 全网通4G手机亮色32GApple iPhone8 全网通4G手机亮色32G',
         productDesc: '121',//商品描述
         score: '3000',
         priceSnapshot: '5000.00',
-        startTime: '2018-05-20 17:56:40',//开奖时间
+        startTime: '2018-05-20 17:56:56',//开奖时间
         endTime: '05-12 02:10',//结束时间
       },
       {
@@ -50,7 +50,7 @@ Page({
         productDesc: '121',//商品描述
         score: '3000',
         priceSnapshot: '5000.00',
-        startTime: '2018-05-21 11:56:00',//开奖时间
+        startTime: '2018-05-21 11:56:09',//开奖时间
         endTime: '05-12 02:10',//结束时间
       },
       {
@@ -60,7 +60,7 @@ Page({
         "productDesc": "测试商品描述",
         "score": 50,
         "priceSnapshot": 99.99,
-        "startTime": "05-18 02:10",
+        "startTime": "2018-05-20 17:56:40",
         "endTime": "2018-05-18 02:10:01",
         "awardType": 1,
         "isParticipated": true,
@@ -76,7 +76,7 @@ Page({
         "productDesc": "测试商品描述",
         "score": 50,
         "priceSnapshot": 99.99,
-        "startTime": "05-18 02:10",
+        "startTime": "2018-05-20 17:56:40",
         "endTime": "2018-05-18 02:10:01",
         "awardType": 1,
         "isParticipated": true,
@@ -92,7 +92,7 @@ Page({
         "productDesc": "测试商品描述",
         "score": 50,
         "priceSnapshot": 99.99,
-        "startTime": "05-18 02:10",
+        "startTime": "2018-05-20 17:56:40",
         "endTime": "2018-05-18 02:10:01",
         "awardType": 1,
         "isParticipated": true,
@@ -108,7 +108,7 @@ Page({
         "productDesc": "测试商品描述",
         "score": 50,
         "priceSnapshot": 99.99,
-        "startTime": "05-18 02:10",
+        "startTime": "2018-05-20 17:56:40",
         "endTime": "2018-05-18 02:10:01",
         "awardType": 1,
         "isParticipated": false,
@@ -120,6 +120,7 @@ Page({
     winModal: '',
     loseModal: '',
     signModal: '',
+    ruleModal: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo')  
   },
   onLoad(options) {
@@ -128,6 +129,8 @@ Page({
     this.loseModal = this.selectComponent('#loseModal')
     this.signModal = this.selectComponent('#signModal')
     this.customerModal = this.selectComponent('#customerModal')
+    this.ruleModal = this.selectComponent('#ruleModal')
+    
     
 
     if (app.globalData.userInfo) {
@@ -170,19 +173,18 @@ Page({
 
     }
 
-    
+    this.getAwardList()
   },
   onReady() {
-    // this.setData({
-    //   awardList: [],
-    //   page: 1,
-    //   isEnd: false
-    // })
-    this.getAwardList()
   },
   onShow() {
   },
   onPullDownRefresh() {
+    this.setData({
+      awardList: [],
+      page: 1,
+      isEnd: false
+    })
     this.getAwardList()
   },
   onReachBottom() {
@@ -218,8 +220,8 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: (res) => {
+        wx.stopPullDownRefresh()
         if (res.data.code == 200) {
-
           if (!res.data.data || !res.data.data.dataList.length) {
             this.setData({  
               isEnd: true
@@ -237,6 +239,7 @@ Page({
         }
       },
       fail: (err) => {
+        wx.stopPullDownRefresh()
         wx.showToast({
           title: '网络异常，请稍后再试',
           icon: 'loading'
@@ -248,6 +251,11 @@ Page({
     console.log(res)
   },
   joinAward(e) {
+    //积分不足
+    if (e.detail.target.dataset.score > this.data.tzgUserInfo.integral) {
+
+    }
+
     wx.request({
       url: baseUrl + '/userAward/joinAward',
       method: 'POST',
@@ -316,5 +324,8 @@ Page({
   },
   serverTap() {
     this.customerModal.serverOpen()
+  },
+  ruleTap() {
+    // this.ruleModal.open()
   }
 })

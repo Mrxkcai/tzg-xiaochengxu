@@ -14,13 +14,17 @@ Component({
    * 组件的初始数据
    */
   data: {
-    countdown: 0
+    countdown: 0,
+    awardTime: ''
   },
 
   /**
    * 组件的方法列表
    */
   ready() {
+    this.setData({
+      awardTime: this.properties.prizeInfo.startTime.substring(5, 16).replace('-', '月').replace(' ', '日') + ' '
+    })
     if (this.properties.prizeInfo.status == 0) {
       this.getCountdown()
     }
@@ -34,7 +38,8 @@ Component({
       let crruntTime = +new Date()
       let awardTime = +new Date(this.properties.prizeInfo.startTime)
       let distance = (awardTime - crruntTime)/1000
-      console.log(distance)
+      console.log(this.properties.prizeInfo.startTime)
+      console.log(crruntTime + '|' + distance + '|' + awardTime)
       if (distance <= 0) {
         this.setData({
           'prizeInfo.status': 1,
