@@ -99,7 +99,6 @@
    display: inline-block;
    width:77rpx;
    height:77rpx;
-   border:2px solid #fff;
    border-radius: 50%;
  }
  .rule_fail{
