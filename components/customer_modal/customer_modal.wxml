@@ -5,21 +5,21 @@
   <view class="customerService_modal_index">
      <view class="customerService_top">
        <view class="customerService_title">
-         <span class="customerService_people">联系客服</span>
+         <span class="customerService_people">{{contant_server}}</span>
        </view>
        <view class="customerService_content">
-         <span class="customerService_tel">0571-8888888</span>
+         <span class="customerService_tel">{{contant_phone}}</span>
        </view> 
      </view>
      <div class="customerService_bot">
         <view class="customerService_tie">
           <text class="customerService_cancle"
-           bindtap="serverCancel">取消</text>
+           bindtap="serverCancel">{{contant_cancel}}</text>
         </view>
         <view class="customerService_tie" style="border-right:0">
           <text class="customerService_cancle" 
           style="color: #EA5739;" 
-          bindtap="serverCall">拨打</text>
+          bindtap="serverCall">{{contant_call}}</text>
         </view>   
      </div> 
    </view>

@@ -8,8 +8,14 @@ Component({
     img: "../../images/rule_logo.png",
     imges: "../../images/relu_copy.png",
     picture:"../../images/close.png",
-    title: "活动规则",
     fail: true
+  },
+  properties:{
+    ruleTip: {
+      type: Object,
+     value:{},
+    } 
+
   },
   methods:{
     ruleClose: function () {

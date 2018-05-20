@@ -12,6 +12,10 @@ Page({
     inputPhone: "",//手机号
     inputYan: "",//验证码
     // huozheng:"",
+    ruleTip: {
+      title:"活动规则",
+      contentList: ['每天签到领到的积分，消耗不等量积分 可获得不同商品的抽奖机会。', '中奖者我们会通过客服电话与您联系，并在第一时间送出您的奖品。','活动解释权归淘租公所有。']
+    },
   },
   //手机号的验证
   inputPhone: function (e) {

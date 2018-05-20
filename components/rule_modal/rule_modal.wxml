@@ -4,29 +4,16 @@
         <image  class="rule_img" src="{{img}}"></image>
       </view>
       <view class="rule_title">
-        <view class="h1">活动规则</view>
+        <view class="h1">{{ruleTip.title}}</view>
       </view> 
-      <view class="rule_ul">
+      <view class="rule_ul" wx:for='{{ruleTip.contentList}}' wx:key='{{item}}'>
         <view class="rule_li">
           <view class="rule_span">
             <span class="rule_span_rule"></span>
           </view>
-          <view class="rule_view">每天签到领到的积分，消耗不等量积分 可获得不同商品的抽奖机会。</view>
+          <view class="rule_view">{{item}}</view>
         </view>
-        <view class="rule_li">
-          <view class="rule_span">
-            <span class="rule_span_rule"></span>
-          </view>
-          <view class="rule_view">中奖者我们会通过客服电话与您联系，并在第一时间送出您的奖品。</view>
-        </view>
-        <view class="rule_li">
-          <view class="rule_span">
-            <span class="rule_span_rule"></span>
-          </view>
-          <view class="rule_view" >
-          活动解释权归淘租公所有。
-          </view>
-        </view>
+       
       </view>
       <view class="rule_bottom">
         <image  class="rule_img_bottom" src="{{imges}}"></image>
@@ -35,5 +22,4 @@
     <view class="rule_modal_circle" >
       <image src="{{picture}}" class="cure_circle" bindtap='ruleClose'></image>
     </view>
-    
   </div>  

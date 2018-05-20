@@ -8,6 +8,16 @@
       animationData: {},
       checkOpacity:1
     },
+    properties: {
+     login_title: {
+        type:String,
+        value:"绑定成功"
+      },
+      login_know:{
+        type:String,
+        value:"知道了"
+      }
+    },
     methods: {
       //点击“知道了”关闭对话框
       sknowEvent: function () {

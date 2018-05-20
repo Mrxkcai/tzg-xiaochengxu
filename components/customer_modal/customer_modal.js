@@ -5,6 +5,24 @@ Component({
   data:{
     cancel: true
   },
+  properties: {
+    contant_server: {
+      type: String,
+      value: '联系客服'
+    },
+    contant_phone:{
+      type: Number,
+      value: '0571-8888888',
+    },
+    contant_cancel: {
+      type: String,
+      value: '取消',
+    },
+    contant_call: {
+      type: String,
+      value: '拨打',
+    },
+  },
   methods:{
     serverCancel: function () {
       var animation = wx.createAnimation({
