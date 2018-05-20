@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -8,8 +6,13 @@ Component({
     img: "../../images/rule_logo.png",
     imges: "../../images/relu_copy.png",
     picture:"../../images/close.png",
-    title: "活动规则",
     show: false
+  },
+  properties:{
+    ruleTip: {
+      type: Object,
+      value:{},
+    } 
   },
   methods:{
     ruleOpen() {

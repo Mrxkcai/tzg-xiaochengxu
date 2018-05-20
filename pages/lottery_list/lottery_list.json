@@ -5,7 +5,8 @@
     "lose-modal": "/components/lose_modal/lose_modal",
     "sign-modal": "/components/sign_modal/sign_modal",
     "rule-modal": "/components/rule_modal/rule_modal",
-    "customer-modal": "/components/customer_modal/customer_modal"
+    "customer-modal": "/components/customer_modal/customer_modal",
+    "dialog-modal": "/components/dialog_modal/dialog_modal"
   },
   "backgroundTextStyle": "PingFangSC-Regular",
   "navigationBarBackgroundColor": "#F3654C",

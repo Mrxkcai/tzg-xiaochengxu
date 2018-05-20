@@ -18,6 +18,10 @@ Page({
       leftButton: '取消',
       rightButton: '拨打'
     },
+    ruleTip: {
+      title: "活动规则",
+      contentList: ['每天签到领到的积分，消耗不等量积分 可获得不同商品的抽奖机会。', '中奖者我们会通过客服电话与您联系，并在第一时间送出您的奖品。', '活动解释权归淘租公所有。']
+    },
     awardList: [
       {
         awardId: 1,
@@ -117,10 +121,11 @@ Page({
         "status": 2
       },
     ],
-    winModal: '',
-    loseModal: '',
-    signModal: '',
-    ruleModal: '',
+    // winModal: '',
+    // loseModal: '',
+    // signModal: '',
+    // customerModal: '',
+    // ruleModal: '',
     canIUse: wx.canIUse('button.open-type.getUserInfo')  
   },
   onLoad(options) {
@@ -131,8 +136,6 @@ Page({
     this.customerModal = this.selectComponent('#customerModal')
     this.ruleModal = this.selectComponent('#ruleModal')
     
-    
-
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -165,12 +168,9 @@ Page({
       },800)
     }
 
+    //是否中奖提示
     if (options.awardId) {
-      //是否中奖提示
-      this.winModal.openModal()
-      this.loseModal.openModal()
-
-
+      this.getAward(options.awardId)
     }
 
     this.getAwardList()
@@ -185,7 +185,7 @@ Page({
       page: 1,
       isEnd: false
     })
-    this.getAwardList()
+    // this.getAwardList()
   },
   onReachBottom() {
     if (this.data.isEnd) {
@@ -240,6 +240,36 @@ Page({
       },
       fail: (err) => {
         wx.stopPullDownRefresh()
+        wx.showToast({
+          title: '网络异常，请稍后再试',
+          icon: 'loading'
+        })
+      }
+    })
+  },
+  getAward(awardId) {
+    wx.request({
+      url: baseUrl + '/userAward/viewUserAwardCondition',
+      method: 'POST',
+      data: {
+        openId: app.globalData.openId,
+        awardId: awardId
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) => {
+        if (res.data.code == 200) {
+          this.winModal.openModal()
+          this.loseModal.openModal()
+        } else {
+          wx.showToast({
+            title: JSON.stringify(res.data.message),
+            icon: 'none'
+          })
+        }
+      },
+      fail: (err) => {
         wx.showToast({
           title: '网络异常，请稍后再试',
           icon: 'loading'

@@ -51,6 +51,7 @@
   <win-modal win-tip="{{winTip}}" id="winModal"></win-modal>
   <lose-modal lose-tip="{{loseTip}}" id="loseModal"></lose-modal>
   <sign-modal sign-tip="{{tzgUserInfo}}" id="signModal"></sign-modal>
-  <rule-modal id="ruleModal"></rule-modal>   
+  <rule-modal rule-tip="{{ruleTip}}" id="ruleModal"></rule-modal>   
   <customer-modal comfirm-tip="{{comfirmTip}}" id="customerModal" bind:successTap="successTap"></customer-modal>
+   <!-- <dialog-modal id="dialogModal"></dialog-modal>     -->
 </view>
