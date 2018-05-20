@@ -1,4 +1,4 @@
-<div class="rule_modal" wx:if="{{fail}}" animation="{{animationData}}"> 
+<div class="rule_modal" wx:if="{{show}}" animation="{{animationData}}" bindtap='ruleClose'> 
     <view class="rule_modal_index">
       <view class="rule_div_img">
         <image  class="rule_img" src="{{img}}"></image>
@@ -33,7 +33,7 @@
       </view>
     </view>
     <view class="rule_modal_circle" >
-      <image src="{{picture}}" class="cure_circle" bindtap='ruleClose'></image>
+      <image src="{{picture}}" class="cure_circle"></image>
     </view>
     
   </div>  

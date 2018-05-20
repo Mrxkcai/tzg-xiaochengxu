@@ -326,6 +326,11 @@ Page({
     this.customerModal.serverOpen()
   },
   ruleTap() {
-    // this.ruleModal.open()
+    this.ruleModal.ruleOpen()
+  },
+  successTap() {
+    wx.makePhoneCall({
+      phoneNumber: '0571-8888888'
+    })
   }
 })

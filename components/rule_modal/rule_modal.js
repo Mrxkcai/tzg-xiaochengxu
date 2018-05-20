@@ -9,28 +9,33 @@ Component({
     imges: "../../images/relu_copy.png",
     picture:"../../images/close.png",
     title: "活动规则",
-    fail: true
+    show: false
   },
   methods:{
-    ruleClose: function () {
+    ruleOpen() {
+      this.setData({
+        show: true
+      })
       var animation = wx.createAnimation({
-        duration: 1000,
+        duration: 200,
         timingFunction: 'ease',
       })
       this.animation = animation
-      animation.opacity(0).step()
+      animation.opacity(1).step()
       this.setData({
         animationData: animation.export()
       })
-      setTimeout(function () {
-        animation.opacity(0).step()
+    },
+    ruleClose() {
+      this.animation.opacity(0).step()
+      this.setData({
+        animationData: this.animation.export()
+      })
+      setTimeout(()=> {
         this.setData({
-          animationData: animation.export()
+          show: false
         })
-      }.bind(this), 1000)
-      // this.setData({
-      //   fail: !this.data.fail
-      // })
+      }, 200)
     }
   }
 })

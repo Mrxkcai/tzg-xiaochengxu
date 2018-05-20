@@ -39,5 +39,9 @@ Component({
         })
       }, 200)
     },
+    rightTap() {
+      this.serverCancel()
+      this.triggerEvent('successTap')
+    }
   }
 })
