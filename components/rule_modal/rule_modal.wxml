@@ -1,22 +1,24 @@
-<div class="rule_modal" wx:if="{{show}}" animation="{{animationData}}" bindtap='ruleClose'> 
-    <view class="rule_modal_index">
-      <view class="rule_div_img">
-        <image  class="rule_img" src="{{img}}"></image>
-      </view>
-      <view class="rule_title">
-        <view class="h1">{{ruleTip.title}}</view>
-      </view> 
-      <view class="rule_ul" wx:for='{{ruleTip.contentList}}' wx:key='{{item}}'>
-        <view class="rule_li">
-          <view class="rule_span">
-            <span class="rule_span_rule"></span>
-          </view>
-          <view class="rule_view">{{item}}</view>
+<div class="rule_modal" wx:if="{{fail}}" animation="{{animationData}}" bindtap='ruleClose'> 
+    <view class="rule_index">
+      <view class="rule_modal_index">
+        <view class="rule_div_img">
+          <image  class="rule_img" src="{{img}}"></image>
         </view>
-       
-      </view>
-      <view class="rule_bottom">
-        <image  class="rule_img_bottom" src="{{imges}}"></image>
+        <view class="rule_title">
+          <view class="h1">{{ruleTip.title}}</view>
+        </view> 
+        <view class="rule_ul" wx:for='{{ruleTip.contentList}}' wx:key='{{item}}'>
+          <view class="rule_li">
+            <view class="rule_span">
+              <span class="rule_span_rule"></span>
+            </view>
+            <view class="rule_view">{{item}}</view>
+          </view>
+        
+        </view>
+        <view class="rule_bottom">
+          <image  class="rule_img_bottom" src="{{imges}}"></image>
+        </view>
       </view>
     </view>
     <view class="rule_modal_circle" >

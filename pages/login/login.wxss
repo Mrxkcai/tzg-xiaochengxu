@@ -36,6 +36,7 @@
   font-size: 30rpx;
   color: #000000;
   margin-left:10.5rpx; 
+  width:70%;
  }
   /* .inputE{
    width: 150rpx;

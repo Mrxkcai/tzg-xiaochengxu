@@ -38,8 +38,8 @@ Component({
       let crruntTime = +new Date()
       let awardTime = +new Date(this.properties.prizeInfo.startTime)
       let distance = (awardTime - crruntTime)/1000
-      console.log(this.properties.prizeInfo.startTime)
-      console.log(crruntTime + '|' + distance + '|' + awardTime)
+      // console.log(this.properties.prizeInfo.startTime)
+      // console.log(crruntTime + '|' + distance + '|' + awardTime)
       if (distance <= 0) {
         this.setData({
           'prizeInfo.status': 1,
