@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -8,35 +6,39 @@ Component({
     img: "../../images/rule_logo.png",
     imges: "../../images/relu_copy.png",
     picture:"../../images/close.png",
-    fail: true
+    show: false
   },
   properties:{
     ruleTip: {
       type: Object,
-     value:{},
+      value:{},
     } 
-
   },
   methods:{
-    ruleClose: function () {
+    ruleOpen() {
+      this.setData({
+        show: true
+      })
       var animation = wx.createAnimation({
-        duration: 1000,
+        duration: 200,
         timingFunction: 'ease',
       })
       this.animation = animation
-      animation.opacity(0).step()
+      animation.opacity(1).step()
       this.setData({
         animationData: animation.export()
       })
-      setTimeout(function () {
-        animation.opacity(0).step()
+    },
+    ruleClose() {
+      this.animation.opacity(0).step()
+      this.setData({
+        animationData: this.animation.export()
+      })
+      setTimeout(()=> {
         this.setData({
-          animationData: animation.export()
+          show: false
         })
-      }.bind(this), 1000)
-      // this.setData({
-      //   fail: !this.data.fail
-      // })
+      }, 200)
     }
   }
 })

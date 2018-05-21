@@ -1,11 +1,13 @@
 .rule_modal{
   display:inline-block;
   background: rgba(0,0,0,0.5);
-  width:100%;height:1344rpx; 
+  width:100%;
+  height:100%; 
   position:fixed;
   top:0rpx;
   left:0rpx;
   z-index:99;
+  opacity: 0;
   text-align:center;
 }
 .rule_index{
@@ -15,7 +17,7 @@
 }
 /*对话框  */
 .rule_modal_index{ 
-   margin-top:365rpx;
+   margin-top:235rpx;
    width:530rpx;
    background:#fff;
    border-radius: 14rpx;

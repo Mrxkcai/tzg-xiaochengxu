@@ -1,4 +1,3 @@
-/* components/customer_modal/customer_modal.wxss */
 .customerService_modal{
   display:inline-block;
   background: rgba(0,0,0,0.5);
@@ -7,16 +6,16 @@
   position:fixed;
   top:0rpx;
   left:0rpx;
-  z-index:99
+  z-index:99;
+  opacity: 0;
 }
 /*对话框  */
 .customerService_modal_index{
    width:560rpx;
    background:#fff;
    margin:0 95rpx; 
-   text-align: center;
-   margin-top:462rpx;
-   border-radius: 8px;
+   margin-top:330rpx;
+   border-radius: 8rpx;
 }
 /*头部  */
 .customerService_top{
