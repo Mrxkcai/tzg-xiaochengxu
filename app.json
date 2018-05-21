@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/login/login",
-    "pages/lottery_list/lottery_list"
+    "pages/lottery_list/lottery_list",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "淘租公",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   }
 }

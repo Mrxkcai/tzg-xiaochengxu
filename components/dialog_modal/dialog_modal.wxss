@@ -9,11 +9,12 @@
  /* 绑定成功样式 */
  .login-dislog-top{
    display: block;
-   width:100%;
+   /* width:100%; */
    text-align:center;
    border-bottom:1rpx solid #E5E5E5;
-   font: 36rpx/141rpx "";
+   font-size: 36rpx;
    color: #000000;  
+    padding: 50rpx 55rpx 30rpx 55rpx; 
  }
  /* “知道了”按钮样式 */
  .login-dislog-bottom{

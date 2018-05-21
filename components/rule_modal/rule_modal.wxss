@@ -2,11 +2,16 @@
   display:inline-block;
   background: rgba(0,0,0,0.5);
   width:100%;
+<<<<<<< HEAD
   height:1344rpx; 
+=======
+  height:100%; 
+>>>>>>> 26d7e0eb9eac1effb6bb049de82cccf43be00e98
   position:fixed;
   top:0rpx;
   left:0rpx;
   z-index:99;
+  opacity: 0;
   text-align:center;
 }
 .rule_index{
@@ -16,7 +21,7 @@
 }
 /*对话框  */
 .rule_modal_index{ 
-   margin-top:365rpx;
+   margin-top:235rpx;
    width:530rpx;
    background:#fff;
    border-radius: 14rpx;
