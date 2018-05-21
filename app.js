@@ -1,10 +1,6 @@
 //app.js
 App({
   onLaunch() {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
 
     // 登录
     wx.login({
@@ -24,6 +20,7 @@ App({
               if (res.data.code == 200) {
                 this.globalData.openId = res.data.data.openId
                 this.globalData.tzgUserInfo = res.data.data
+                console.log(this.globalData.tzgUserInfo)
               } else if (res.data.code == 1003) { //未授权
                 this.globalData.openId = res.data.data
               }
@@ -56,6 +53,7 @@ App({
                 },
                 success: (res) => {
                   //1010 已授权
+                  console.log(res)
                   if (res.data.code == 200) { //第一次保持用户信息
                     this.globalData.tzgUserInfo = res.data.data
                   }
@@ -70,6 +68,7 @@ App({
             }
           })
         } else if (!res.authSetting['scope.userInfo']) { //没有授权
+          console.log('authorize')
           wx.authorize({
             scope: 'scope.userInfo',
             success: (res) => {

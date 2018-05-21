@@ -37,7 +37,7 @@ Page({
         productDesc: '121',//商品描述
         score: '3000',
         priceSnapshot: '5000.00',
-        startTime: '2018-05-20 17:56:56',//开奖时间
+        startTime: '2018-05-21 17:56:56',//开奖时间
         endTime: '05-12 02:10',//结束时间
       },
       {
@@ -64,7 +64,7 @@ Page({
         "productDesc": "测试商品描述",
         "score": 50,
         "priceSnapshot": 99.99,
-        "startTime": "2018-05-20 17:56:40",
+        "startTime": "2018-05-21 17:56:40",
         "endTime": "2018-05-18 02:10:01",
         "awardType": 1,
         "isParticipated": true,
@@ -132,7 +132,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')  
   },
   onLoad(options) {
-    console.log('lottery')
+    // this.auth()
+
     this.winModal = this.selectComponent('#winModal')
     this.loseModal = this.selectComponent('#loseModal')
     this.signModal = this.selectComponent('#signModal')
@@ -177,7 +178,7 @@ Page({
       this.getAward(options.awardId)
     }
 
-    this.getAwardList()
+    // this.getAwardList()
   },
   onReady() {
   },
@@ -264,6 +265,8 @@ Page({
       },
       success: (res) => {
         if (res.data.code == 200) {
+
+          //
           this.winModal.openModal()
           this.loseModal.openModal()
         } else {
@@ -281,14 +284,12 @@ Page({
       }
     })
   },
-  onGotUserInfo(res) {
-    console.log(res)
-  },
   joinAward(e) {
     //积分不足
-    // if (e.detail.target.dataset.score > this.data.tzgUserInfo.integral) {
+    if (e.detail.target.dataset.score > this.data.tzgUserInfo.integral) {
       this.dialogModal.onShow()
-    // }
+      return
+    }
 
     wx.request({
       url: baseUrl + '/userAward/joinAward',
@@ -320,6 +321,57 @@ Page({
         })
       }
     })
+  },
+  onGotUserInfo(e) {
+    console.log(e)
+  },
+  auth() {
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.globalData.userInfo = res.userInfo
+              console.log(this.globalData.userInfo)
+              wx.request({
+                url: 'https://api.taozugong.com/award/user/addUserInfo',
+                method: 'POST',
+                data: {
+                  avatarUrl: res.userInfo.avatarUrl,
+                  nickName: res.userInfo.nickName,
+                  openId: this.globalData.openId,
+                },
+                header: {
+                  'content-type': 'application/json' // 默认值
+                },
+                success: (res) => {
+                  //1010 已授权
+                  if (res.data.code == 200) { //第一次保存用户信息
+                    this.globalData.tzgUserInfo = res.data.data
+                  }
+                }
+              })
+
+              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 所以此处加入 callback 以防止这种情况
+              if (this.userInfoReadyCallback) {
+                this.userInfoReadyCallback(res)
+              }
+            }
+          })
+        } else if (!res.authSetting['scope.userInfo']) { //没有授权
+          console.log('authorize')
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success: (res) => {
+
+              this.auth()
+            }
+          })
+        }
+      }
+    });
   },
   toLogin() {
     wx.login({
