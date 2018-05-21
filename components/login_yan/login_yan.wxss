@@ -1,18 +1,15 @@
 /* components/loginYan/loginYan.wxss */
 .login-yanZ{
   width: 150rpx;
-   height:50rpx;
    display: inline-block;
    margin-right:10px;
    border-radius: 10rpx;
    padding:0rpx 15rpx; 
-   padding-bottom: 0rpx;
    font-family: PingFangSC-Regular;
    font-size: 24rpx;
    color: #666;
    letter-spacing: 0;
-   line-height:50rpx; 
    text-align: center; 
    background-color:#fff;
-   margin-top:13rpx;
+   /* margin-top:13rpx; */
  }

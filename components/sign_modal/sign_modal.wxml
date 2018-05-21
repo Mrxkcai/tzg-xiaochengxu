@@ -1,4 +1,4 @@
-<view bindtap='signClose' >
+<view bindtap='signClose'>
   <view wx:if="{{signFail}}" class="sign_modal" animation="{{animModalData}}">
     <view class="sign-body">
       <image class="sign_modal_index" src="{{ims}}" mode="widthFix">

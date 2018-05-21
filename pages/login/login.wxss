@@ -3,10 +3,8 @@
 /* 头部的样式 */
 .login-top{
   width:100%; 
-  height:200rpx;
   border-top:1px solid #F7F7F7;
   text-align: center;
-  
 }
 /* 图片的样式 */
 .login-img{
@@ -24,7 +22,6 @@
  .itemView{
    margin:0 40rpx;
    border-bottom: 1px solid #ddd;
-   height:102rpx;
    display: flex;
    flex-direction: row;
    justify-content:space-between ;
@@ -32,11 +29,14 @@
  }
  /* input输入框的样式设置 */
 .input-phone{
+  margin-top:30rpx;
+  margin-bottom: 30rpx;
   font-family: PingFangSC-Regular;
   font-size: 30rpx;
+  line-height: 42rpx;
   color: #000000;
   margin-left:10.5rpx; 
-  width:70%;
+  width:97%;
  }
   /* .inputE{
    width: 150rpx;
@@ -54,7 +54,6 @@
  /* 提交按钮的样式 */
   .loginBtn{
    margin-top:80rpx;
-   height:94rpx;
    width:670rpx;
    border-radius: 10rpx;
    background-color: #F3654C;
@@ -66,13 +65,13 @@
    opacity: 0.5;
    font-family: PingFangSC-Regular;
    font-size: 36rpx;
-   line-height:94rpx;
+   font:36rpx/50rpx "";
+   margin:22rpx 0;
    color: #FFFFFF;
  }
  .button-hover{
   background-color: #F3654C;
   color:#fff;   
  }
-/*123  */
 
 

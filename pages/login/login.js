@@ -18,7 +18,7 @@ Page({
     },
   },
   //手机号的验证
-  inputPhone: function (e) {
+  inputPhonee:function(e){
     var myreg = /^[1][3,4,5,7,8][0-9]{9}$/g;
     if (!myreg.test(e.detail.value)) {
       wx.showToast({
@@ -26,10 +26,12 @@ Page({
         icon: "none",
       })
     }
-    wx.setStorage({
-      key: "inputPhone",
-      data: e.detail.value
-    })
+  },
+  inputPhone: function (e) {
+    // wx.setStorage({
+    //   key: "inputPhone",
+    //   data: e.detail.value
+    // })
     this.setData({
      inputPhone: e.detail.value
     })
