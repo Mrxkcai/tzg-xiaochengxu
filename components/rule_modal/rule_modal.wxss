@@ -2,11 +2,7 @@
   display:inline-block;
   background: rgba(0,0,0,0.5);
   width:100%;
-<<<<<<< HEAD
   height:1344rpx; 
-=======
-  height:100%; 
->>>>>>> 26d7e0eb9eac1effb6bb049de82cccf43be00e98
   position:fixed;
   top:0rpx;
   left:0rpx;
