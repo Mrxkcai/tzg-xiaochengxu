@@ -134,4 +134,5 @@
   color: #333333;
   letter-spacing: -0px;
   text-align: center;
+  border: none;
 }

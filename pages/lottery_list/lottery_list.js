@@ -323,7 +323,27 @@ Page({
     })
   },
   onGotUserInfo(e) {
-    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    wx.request({
+      url: 'https://api.taozugong.com/award/user/addUserInfo_',
+      method: 'POST',
+      data: {
+        avatarUrl: app.globalData.userInfo.avatarUrl,
+        nickName: app.globalData.userInfo.nickName,
+        openId: app.globalData.openId,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: (res) => {
+        //1010 已授权
+        // console.log(res)
+        if (res.data.code == 200) { //第一次保持用户信息
+          this.globalData.tzgUserInfo = res.data.data
+        }
+      }
+    })
+    console.log(app.globalData.userInfo)
   },
   auth() {
     wx.getSetting({

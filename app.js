@@ -17,10 +17,11 @@ App({
               'content-type': 'application/json' // 默认值
             },
             success: (res) => {
+              console.log(res)
+
               if (res.data.code == 200) {
                 this.globalData.openId = res.data.data.openId
                 this.globalData.tzgUserInfo = res.data.data
-                console.log(this.globalData.tzgUserInfo)
               } else if (res.data.code == 1003) { //未授权
                 this.globalData.openId = res.data.data
               }
@@ -39,7 +40,7 @@ App({
           wx.getUserInfo({
             success: res => {
               this.globalData.userInfo = res.userInfo
-              console.log(this.globalData.userInfo)
+              // console.log(this.globalData.userInfo)
               wx.request({
                 url: 'https://api.taozugong.com/award/user/addUserInfo',
                 method: 'POST',
@@ -53,7 +54,7 @@ App({
                 },
                 success: (res) => {
                   //1010 已授权
-                  console.log(res)
+                  // console.log(res)
                   if (res.data.code == 200) { //第一次保持用户信息
                     this.globalData.tzgUserInfo = res.data.data
                   }
@@ -68,11 +69,11 @@ App({
             }
           })
         } else if (!res.authSetting['scope.userInfo']) { //没有授权
-          console.log('authorize')
+          // console.log('authorize')
           wx.authorize({
             scope: 'scope.userInfo',
             success: (res) => {
-              console.log(res)
+              // console.log(res)
             }
           })
         }
