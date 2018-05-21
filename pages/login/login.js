@@ -112,6 +112,7 @@ Page({
         duration: 2000
       })
     } else {
+      console.log(1)
       wx.request({
         url: 'https://api.taozugong.com/award/sms/verifyMobile',
         method: 'POST',
@@ -124,14 +125,17 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(res.data)
-          if (res.data.code == 200) {
-              wx.redirectTo({
-                   url: '../lottery_list/lottery_list',
+          console.log(123)
+          // if (res.data.code == 200) {
+            wx.navigateTo({
+                url: '../lottery_list/lottery_list',
               });
-          }
+          // }
         }
       })
     }
+    // wx.redirectTo({
+    //   url: '../lottery_list/lottery_list',
+    // });
   },
 })
