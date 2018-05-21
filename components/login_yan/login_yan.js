@@ -38,7 +38,14 @@ Component({
         })
       }
      }, 700)
-    if (!this.data.inputPhone) {
+     var myreg = /^[1][3,4,5,7,8][0-9]{9}$/g;
+    //  if () {
+    //    wx.showToast({
+    //      title: '请输入11位手机号',
+    //      icon: "none",
+    //    })
+    //  }
+     if (!this.data.inputPhone || !myreg.test(this.data.inputPhone)) {
       console.log(3)
       wx.showToast({
         title: '请输入11位手机号',
