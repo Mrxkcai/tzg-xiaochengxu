@@ -53,5 +53,5 @@
   <sign-modal sign-tip="{{tzgUserInfo}}" id="signModal"></sign-modal>
   <rule-modal rule-tip="{{ruleTip}}" id="ruleModal"></rule-modal>   
   <customer-modal comfirm-tip="{{comfirmTip}}" id="customerModal" bind:successTap="successTap"></customer-modal>
-    <!-- <dialog-modal id="dialogModal"></dialog-modal>      -->
+  <dialog-modal content="{{dialogContent}}" content-style="{{contentStyle}}" id="dialogModal"></dialog-modal>      
 </view>

@@ -121,6 +121,9 @@ Page({
         "status": 2
       },
     ],
+    dialogContent: '当前积分不足，不能参与本次抽奖你可以继续签到积累积分',
+    contentStyle: 'font-size: 30rpx;color: #353535;',
+
     // winModal: '',
     // loseModal: '',
     // signModal: '',
@@ -135,6 +138,7 @@ Page({
     this.signModal = this.selectComponent('#signModal')
     this.customerModal = this.selectComponent('#customerModal')
     this.ruleModal = this.selectComponent('#ruleModal')
+    this.dialogModal = this.selectComponent('#dialogModal')
     
     if (app.globalData.userInfo) {
       this.setData({
@@ -282,9 +286,9 @@ Page({
   },
   joinAward(e) {
     //积分不足
-    if (e.detail.target.dataset.score > this.data.tzgUserInfo.integral) {
-
-    }
+    // if (e.detail.target.dataset.score > this.data.tzgUserInfo.integral) {
+      this.dialogModal.onShow()
+    // }
 
     wx.request({
       url: baseUrl + '/userAward/joinAward',
