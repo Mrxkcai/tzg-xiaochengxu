@@ -40,13 +40,6 @@ Page({
   inputYan: function (e) {
     var that = this
     console.log(this.data.inputPhone, this.data.inputYan)
-    // var myreg = /^[1][3,4,5,7,8][0-9]{9}$/g;
-    // if (!myreg.test(this.data.inputPhone)) {
-    //   wx.showToast({
-    //     title: '请输入11位手机号',
-    //     icon: "none",
-    //   })
-    // }
     this.setData({
       inputYan: e.detail.value,
     })
@@ -125,17 +118,11 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(123)
-          // if (res.data.code == 200) {
             wx.navigateTo({
                 url: '../lottery_list/lottery_list',
-              });
-          // }
+            });
         }
       })
     }
-    // wx.redirectTo({
-    //   url: '../lottery_list/lottery_list',
-    // });
   },
 })

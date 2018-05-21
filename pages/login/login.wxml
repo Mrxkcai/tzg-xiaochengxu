@@ -16,10 +16,8 @@
       <button class="loginBtn" 
       bindtap="loginBtn">
       <div class="login-sumit" wx:if="{{!sumbitShow}}">提交</div>
-     <!-- <navigator url="../lottery_list/lottery_list">  -->
-      
-            <navigator url="../lottery_list/lottery_list" open-type="navigate" class="login-sumit" style="color:#FFF;opacity:1;" wx:else>提交</navigator>
-     <!-- </navigator> -->
+      <navigator  open-type="navigate" class="login-sumit" 
+        style="color:#FFF;opacity:1;" wx:else>提交</navigator>
       </button>
   
     </view>
