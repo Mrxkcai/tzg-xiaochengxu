@@ -24,7 +24,7 @@ Page({
     },
     awardList: [
       {
-        awardId: 1,
+        awardId: 15,
         // isClosed: false,//是否关闭
         awardType: 1,//抽奖类型
         isParticipated: false, //是否参与
@@ -35,13 +35,13 @@ Page({
         productPic: 'http://img.taozugong.com/product/2018-05-04/88d8afabfDm8jS@!p_mass_90_size_750',
         productTitle: 'Apple iPhone8 全网通4G手机亮色32GApple iPhone8 全网通4G手机亮色32G',
         productDesc: '121',//商品描述
-        score: '3000',
+        score: 1,
         priceSnapshot: '5000.00',
         startTime: '2018-05-21 17:56:56',//开奖时间
         endTime: '05-12 02:10',//结束时间
       },
       {
-        awardId: 1,
+        awardId: 15,
         // isClosed: false,//是否关闭
         awardType: 1,//抽奖类型
         isParticipated: false, //是否参与
@@ -52,7 +52,7 @@ Page({
         productPic: 'http://img.taozugong.com/product/2018-05-04/88d8afabfDm8jS@!p_mass_90_size_750',
         productTitle: 'Apple iPhone8 全网通4G手机亮色32G',
         productDesc: '121',//商品描述
-        score: '3000',
+        score: 1,
         priceSnapshot: '5000.00',
         startTime: '2018-05-21 11:56:09',//开奖时间
         endTime: '05-12 02:10',//结束时间
@@ -134,13 +134,6 @@ Page({
   onLoad(options) {
     this.getUserInfo()
 
-    this.winModal = this.selectComponent('#winModal')
-    this.loseModal = this.selectComponent('#loseModal')
-    this.signModal = this.selectComponent('#signModal')
-    this.customerModal = this.selectComponent('#customerModal')
-    this.ruleModal = this.selectComponent('#ruleModal')
-    this.dialogModal = this.selectComponent('#dialogModal')
-    
     if (this.data.tzgUserInfo && this.data.tzgUserInfo.firstLogin) {
       setTimeout(()=>{  
         this.signModal.signOpen()
@@ -152,9 +145,20 @@ Page({
       this.getAward(options.awardId)
     }
 
-    // this.getAwardList()
+    // this.setData({
+    //   awardList: [],
+    //   page: 1,
+    //   isEnd: false
+    // })
+    this.getAwardList()
   },
   onReady() {
+    this.winModal = this.selectComponent('#winModal')
+    this.loseModal = this.selectComponent('#loseModal')
+    this.signModal = this.selectComponent('#signModal')
+    this.customerModal = this.selectComponent('#customerModal')
+    this.ruleModal = this.selectComponent('#ruleModal')
+    this.dialogModal = this.selectComponent('#dialogModal')
   },
   onShow() {
   },
@@ -164,7 +168,7 @@ Page({
       page: 1,
       isEnd: false
     })
-    // this.getAwardList()
+    this.getAwardList()
   },
   onReachBottom() {
     if (this.data.isEnd) {
@@ -208,7 +212,7 @@ Page({
             return
           }
           this.setData({  
-            // awardList: this.data.awardList.concat(res.data.data.dataList)
+            awardList: this.data.awardList.concat(res.data.data.dataList)
           })
         } else {
           wx.showToast({
@@ -271,13 +275,14 @@ Page({
       data: {
         openId: app.globalData.openId,
         id: e.detail.target.dataset.id,
-        formId: e.detail.formId,
-        pageUrl: '/pages/lottery_list/lottery_list'
+        formId: 1||e.detail.formId,
+        pageUrl: '/pages/lottery_list/lottery_list?awardId=' + e.detail.target.dataset.id
       },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: (res) => {
+        console.log(res)
         if (res.data.code == 200) {
         } else if (res.data.code == 1006) {//未授权登录
           

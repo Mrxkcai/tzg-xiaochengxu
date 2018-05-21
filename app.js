@@ -17,11 +17,11 @@ App({
               'content-type': 'application/json' // 默认值
             },
             success: (res) => {
-              console.log(res)
-
               if (res.data.code == 200) {
                 this.globalData.openId = res.data.data.openId
                 this.globalData.tzgUserInfo = res.data.data
+                this.globalData.userInfo = res.data.data
+                
               } else if (res.data.code == 1003) { //未授权
                 this.globalData.openId = res.data.data
               }
