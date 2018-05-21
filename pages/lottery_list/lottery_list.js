@@ -132,7 +132,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')  
   },
   onLoad(options) {
-    // this.auth()
+    this.getUserInfo()
 
     this.winModal = this.selectComponent('#winModal')
     this.loseModal = this.selectComponent('#loseModal')
@@ -140,32 +140,6 @@ Page({
     this.customerModal = this.selectComponent('#customerModal')
     this.ruleModal = this.selectComponent('#ruleModal')
     this.dialogModal = this.selectComponent('#dialogModal')
-    
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        tzgUserInfo: app.globalData.tzgUserInfo
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回  
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          tzgUserInfo: app.globalData.tzgUserInfo
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理  
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            tzgUserInfo: app.globalData.tzgUserInfo
-          })
-        }
-      })  
-    }  
     
     if (this.data.tzgUserInfo && this.data.tzgUserInfo.firstLogin) {
       setTimeout(()=>{  
@@ -323,75 +297,55 @@ Page({
     })
   },
   onGotUserInfo(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    wx.request({
-      url: 'https://api.taozugong.com/award/user/addUserInfo_',
-      method: 'POST',
-      data: {
-        avatarUrl: app.globalData.userInfo.avatarUrl,
-        nickName: app.globalData.userInfo.nickName,
-        openId: app.globalData.openId,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: (res) => {
-        //1010 已授权
-        // console.log(res)
-        if (res.data.code == 200) { //第一次保持用户信息
-          this.globalData.tzgUserInfo = res.data.data
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      wx.request({
+        url: baseUrl + '/user/addUserInfo',
+        method: 'POST',
+        data: {
+          avatarUrl: app.globalData.userInfo.avatarUrl,
+          nickName: app.globalData.userInfo.nickName,
+          openId: app.globalData.openId,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: (res) => {
+          //1010 已授权
+          if (res.data.code == 200) { //第一次保存用户信息
+            app.globalData.tzgUserInfo = res.data.data
+          }
+          this.getUserInfo()
         }
-      }
-    })
-    console.log(app.globalData.userInfo)
+      })
+    }
   },
-  auth() {
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.globalData.userInfo = res.userInfo
-              console.log(this.globalData.userInfo)
-              wx.request({
-                url: 'https://api.taozugong.com/award/user/addUserInfo',
-                method: 'POST',
-                data: {
-                  avatarUrl: res.userInfo.avatarUrl,
-                  nickName: res.userInfo.nickName,
-                  openId: this.globalData.openId,
-                },
-                header: {
-                  'content-type': 'application/json' // 默认值
-                },
-                success: (res) => {
-                  //1010 已授权
-                  if (res.data.code == 200) { //第一次保存用户信息
-                    this.globalData.tzgUserInfo = res.data.data
-                  }
-                }
-              })
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        } else if (!res.authSetting['scope.userInfo']) { //没有授权
-          console.log('authorize')
-          wx.authorize({
-            scope: 'scope.userInfo',
-            success: (res) => {
-
-              this.auth()
-            }
+  getUserInfo() {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        tzgUserInfo: app.globalData.tzgUserInfo
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回  
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          tzgUserInfo: app.globalData.tzgUserInfo
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理  
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            tzgUserInfo: app.globalData.tzgUserInfo
           })
         }
-      }
-    });
+      })
+    }
   },
   toLogin() {
     wx.login({

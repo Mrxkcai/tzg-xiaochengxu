@@ -40,26 +40,6 @@ App({
           wx.getUserInfo({
             success: res => {
               this.globalData.userInfo = res.userInfo
-              // console.log(this.globalData.userInfo)
-              wx.request({
-                url: 'https://api.taozugong.com/award/user/addUserInfo',
-                method: 'POST',
-                data: {
-                  avatarUrl: res.userInfo.avatarUrl,
-                  nickName: res.userInfo.nickName,
-                  openId: this.globalData.openId,
-                },
-                header: {
-                  'content-type': 'application/json' // 默认值
-                },
-                success: (res) => {
-                  //1010 已授权
-                  // console.log(res)
-                  if (res.data.code == 200) { //第一次保持用户信息
-                    this.globalData.tzgUserInfo = res.data.data
-                  }
-                }
-              })
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -69,11 +49,9 @@ App({
             }
           })
         } else if (!res.authSetting['scope.userInfo']) { //没有授权
-          // console.log('authorize')
           wx.authorize({
             scope: 'scope.userInfo',
             success: (res) => {
-              // console.log(res)
             }
           })
         }
