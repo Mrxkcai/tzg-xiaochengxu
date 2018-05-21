@@ -104,15 +104,34 @@ Page({
   },
   //提交按钮的函数
   loginBtn: function () {
-    wx.redirectTo({
-      url: '../lottery_list / lottery_list',
-    });
-    
-    
+    var that = this
+    if (this.data.inputPhone.length == 0) {
+      wx.showToast({
+        title: '手机号或验证码错误！',
+        icon: "none",
+        duration: 2000
+      })
+    } else {
+      wx.request({
+        url: 'https://api.taozugong.com/award/sms/verifyMobile',
+        method: 'POST',
+        data: {
+          mobile: this.data.inputPhone,
+          authCode: this.data.inputYan,
+          openId: 111
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data)
+          if (res.data.code == 200) {
+              wx.redirectTo({
+                   url: '../lottery_list/lottery_list',
+              });
+          }
+        }
+      })
+    }
   },
-  // bindPhone(e) {
-  //   this.setData({
-  //     inputPhone: e.detail.value
-  //   })
-  // }
 })
