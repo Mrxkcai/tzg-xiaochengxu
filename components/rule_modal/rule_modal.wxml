@@ -1,4 +1,4 @@
-<div class="rule_modal" wx:if="{{fail}}" animation="{{animationData}}" bindtap='ruleClose'> 
+<div class="rule_modal" wx:if="{{show}}" animation="{{animationData}}" bindtap='ruleClose'> 
     <view class="rule_index">
       <view class="rule_modal_index">
         <view class="rule_div_img">

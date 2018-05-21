@@ -4,58 +4,50 @@
       multipleSlots:true //在组件定义时的选择中启用多slot支持
     },
     data:{
-      show:true,
+      show:false,
       animationData: {},
       checkOpacity:1
     },
     properties: {
-     login_title: {
+     content: {
         type:String,
         value:"绑定成功"
       },
-      login_know:{
+      buttonTitle:{
         type:String,
         value:"知道了"
+      },
+      contentStyle: {
+        type: String,
+        value: ''
       }
     },
     methods: {
       //点击“知道了”关闭对话框
-      sknowEvent: function () {
-        var animation = wx.createAnimation({
-          duration: 1000,
-          timingFunction: 'ease',
-        })
-        this.animation = animation
-        animation.opacity(0).step()
+      sknowEvent() {
+        this.animation.opacity(0).step()
         this.setData({
-          animationData: animation.export()
+          animationData: this.animation.export()
         })
-        setTimeout(function () {
-          animation.opacity(0).step()
+        setTimeout(() => {
           this.setData({
-            animationData: animation.export()
+            show: false
           })
-        }.bind(this), 1000)
-        // this.setData({
-        //   show: !this.data.show
-        // })
+        }, 200)
       },
-      onShow: function () {
+      onShow() {
+        this.setData({
+          show: true
+        })
         var animation = wx.createAnimation({
-          duration: 1000,
+          duration: 200,
           timingFunction: 'ease',
         })
         this.animation = animation
-        animation.opacity(0).step()
+        animation.opacity(1).step()
         this.setData({
           animationData: animation.export()
         })
-        setTimeout(function () {
-          animation.opacity(0.1).step()
-          this.setData({
-            animationData: animation.export()
-          })
-        }.bind(this), 1000)
       }
     }
   })
