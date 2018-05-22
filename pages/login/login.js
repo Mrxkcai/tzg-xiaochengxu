@@ -36,22 +36,26 @@ Page({
   // 当验证码失去焦点时验证
   inputYan: function (e) {
     this.setData({
-        sumbitShow: !this.data.sumbiShow
-     })
-    this.setData({
+      sumbitShow: !this.data.sumbiShow,
       inputYan: e.detail.value
     })
+    
   },
   //提交按钮的函数
   loginBtn: function () {
     var that = this
-    if (this.data.inputPhone.length == 0||this.data.inputYan.length==0) {
+    if (this.data.inputPhone.length == 0&&this.data.inputYan.length==0) {
+      wx.showToast({
+        title: '手机号或验证码不能为空！',
+        icon: "none",
+        duration: 2000
+      })
+    } else if (this.data.inputPhone.length == 0 ||this.data.inputYan.length == 0){
       wx.showToast({
         title: '手机号或验证码错误！',
         icon: "none",
         duration: 2000
       })
-      
     } else {
       wx.request({
         url: 'https://api.taozugong.com/award/sms/verifyMobile',

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view style='background:#fff'>
+<view style="background-color:#fff">
   <view class="login login-top">
     <image  class="login login-img"     
        src="{{src}}"></image>
@@ -17,7 +17,7 @@
       bindtap="loginBtn">
       <div class="login-sumit" wx:if="{{!sumbitShow}}">提交</div>
       <div  open-type="navigate" class="login-sumit" 
-        style="color:#FFF;opacity:1;" wx:else wx:else>提交</div>
+        style="color:#FFF;opacity:1;"  wx:else>提交</div>
       </button>
     </view>
   </view>
