@@ -37,7 +37,7 @@ Component({
           disabled: false
         })
       }
-     }, 700)
+     }, 1000)
      var myreg = /^[1][3,4,5,7,8][0-9]{9}$/g;
     //  if () {
     //    wx.showToast({

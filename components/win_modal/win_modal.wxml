@@ -23,6 +23,5 @@
           <button class="win-button" bindtap='closeModal'>朕知道了</button>
         </view>
     </view>
-    
   </view>
 </view>
