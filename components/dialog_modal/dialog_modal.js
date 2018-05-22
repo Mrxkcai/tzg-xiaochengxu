@@ -4,7 +4,7 @@
       multipleSlots:true //在组件定义时的选择中启用多slot支持
     },
     data:{
-      showw:false,
+      show:false,
       animationData: {},
       checkOpacity:1
     },
@@ -24,8 +24,11 @@
     },
     methods: {
       //点击“知道了”关闭对话框
+      success() {
+        this.sknowEvent()
+        this.triggerEvent('success')
+      },
       sknowEvent() {
-        console.log(1231)
         wx.navigateTo({
           url: '../lottery_list/lottery_list',
         });
@@ -41,7 +44,7 @@
       },
       onShow() {
         this.setData({
-          showw: true
+          show: true
         })
         var animation = wx.createAnimation({
           duration: 200,

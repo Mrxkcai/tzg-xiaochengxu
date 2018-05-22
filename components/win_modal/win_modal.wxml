@@ -20,7 +20,7 @@
             </block> 
             <image src='/images/win_footer.png' mode='widthFix' class='win-footer'></image>
           </view>
-          <button class="win-button" bindtap='closeModal'>郑知道了</button>
+          <button class="win-button" bindtap='closeModal'>朕知道了</button>
         </view>
     </view>
     

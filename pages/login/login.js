@@ -1,6 +1,5 @@
-//index.js
-//获取应用实例
-// var interval = null 
+const app = getApp()
+
 Page({
   data: {
     src: "../../images/logo.png",
@@ -16,6 +15,8 @@ Page({
       title:"活动规则",
       contentList: ['每天签到领到的积分，消耗不等量积分 可获得不同商品的抽奖机会。', '中奖者我们会通过客服电话与您联系，并在第一时间送出您的奖品。','活动解释权归淘租公所有。']
     },
+  },
+  onLoad(options) {
   },
   //手机号的验证
   // inputPhonee:function(e){
@@ -62,7 +63,7 @@ Page({
         data: {
           mobile: this.data.inputPhone,
           authCode: this.data.inputYan,
-          openId: "ewee"
+          openId: app.globalData.openId
         },
         header: {
           'content-type': 'application/x-www-form-urlencoded'
@@ -70,12 +71,16 @@ Page({
         success: function (res) {
           console.log(res)
           if(res.data.code==200){
-            that.setData({
-              show: !that.data.show,
-            })
+            this.loginDialog = this.selectComponent('#loginDialog')
+            this.loginDialog.onShow
           }
         }
       })
     }
   },
+  loginSuccess() {
+    wx.navigateTo({
+      url: '/pages/lottery_list/lottery_list'
+    })
+  }
 })

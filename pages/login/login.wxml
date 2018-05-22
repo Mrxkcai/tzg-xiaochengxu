@@ -21,9 +21,6 @@
       </button>
     </view>
   </view>
-   <login-dislog wx:if="{{show}}"></login-dislog> 
-       <!-- <rule-modal rule-tip="{{ruleTip}}"></rule-modal>         -->
-          <!-- <customer-modal></customer-modal>          -->
-         <!-- <sign-modal></sign-modal>        -->
+  <login-dialog id="loginDialog" bind:success="loginSuccess"></login-dialog>  
 </view>
 

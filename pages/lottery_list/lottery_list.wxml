@@ -6,15 +6,16 @@
       <button open-type="openSetting">打开授权设置页</button>  
       <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> 
       <button formType="submit">提交</button>
-    </form> -->
+    </form>   -->
 
     <view class="user-center">
       <image class="icon" src="{{tzgUserInfo.avatarUrl?userInfo.avatarUrl:'/images/logo.png'}}" mode="widthFix"></image>
       <view class="user-message">
         <view>
-          <view class="login" wx:if="{{!tzgUserInfo}}" bindtap='toLogin'>点击登录</view> 
+          <button wx:if="{{!tzgUserInfo}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="login">点击登录</button> 
+          <!-- <view class="login" wx:if="{{!tzgUserInfo}}" bindtap='toLogin'>点击登录</view>  -->
           <view class="name" wx:if="{{tzgUserInfo}}">{{userInfo.nickName}}</view>
-          <view class="gray-button" bindtap='bindPhone' wx:if="{{tzgUserInfo}}">{{tzgUserInfo.mobile?'已绑定手机号':'绑定手机号'}}</view>  
+          <view class="gray-button" bindtap='bindPhone' wx:if="{{tzgUserInfo}}">{{tzgUserInfo.mobile?'已绑定手机号':'绑定手机号'}}</view>   
         </view>
         <view style="text-align:right">
           <view class="score-title">累计积分</view>
