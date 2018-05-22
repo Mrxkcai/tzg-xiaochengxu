@@ -5,5 +5,8 @@
     "rule-modal": "/components/rule_modal/rule_modal",
     "customer-modal": "/components/customer_modal/customer_modal",
     "sign-modal": "/components/sign_modal/sign_modal"
-  }
+  },
+  "backgroundTextStyle": "PingFangSC-Regular",
+  "navigationBarBackgroundColor": "#FFF",
+  "navigationBarTitleText": "绑定手机号"
 }
