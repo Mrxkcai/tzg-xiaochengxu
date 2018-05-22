@@ -2,7 +2,7 @@
    <button class="login-yanZ" 
     disabled='{{disabled}}'  
     data-id="2" 
-    bindtap="getVerificationCode">
+    bindtap="getVerificationCode" >
     {{time}}
    </button>
    <!-- <button class="login-yanZ te" 
@@ -13,4 +13,6 @@
     bindtap="getVerificationCode" >
     {{time}}
    </button> -->
+   <!-- <navigator  open-type="navigate" class="login-sumit" 
+        style="color:#FFF;opacity:1;" wx:else>提交</navigator> -->
 </view>

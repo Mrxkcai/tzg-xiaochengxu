@@ -2,7 +2,6 @@
   "pages": [
     "pages/login/login",
     "pages/lottery_list/lottery_list"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

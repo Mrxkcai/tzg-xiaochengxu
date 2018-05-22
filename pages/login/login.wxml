@@ -6,25 +6,24 @@
   </view>
   <view class="login-form">
     <view class="itemView">
-    <input class="input-phone" name="inputPhone"  placeholder-style="color:#999;" maxlength='11' placeholder="请输入手机号"   bindinput="inputPhone" bindblur="inputPhonee" style="width:100%"/>
+    <input class="input-phone" name="inputPhone"  placeholder-style="color:#999;" maxlength='11' placeholder="请输入手机号"   bindinput="inputPhone"  style="width:100%"/>
     </view>
     <view class="itemView">
-      <input class="input-phone"  placeholder-style="color:#999;" name="inputYan" placeholder="请输入验证码"  bindblur="inputYan"/>
+      <input class="input-phone"  placeholder-style="color:#999;" name="inputYan" placeholder="请输入验证码"  bindinput="inputYan"/>
       <login-yan inputPhone="{{inputPhone}}" class="inputE"></login-yan>
     </view>
     <view class="viewName">
       <button class="loginBtn" 
       bindtap="loginBtn">
       <div class="login-sumit" wx:if="{{!sumbitShow}}">提交</div>
-      <navigator  open-type="navigate" class="login-sumit" 
-        style="color:#FFF;opacity:1;" wx:else>提交</navigator>
+      <div  open-type="navigate" class="login-sumit" 
+        style="color:#FFF;opacity:1;" wx:else wx:else>提交</div>
       </button>
-  
     </view>
   </view>
    <login-dislog wx:if="{{show}}"></login-dislog> 
        <!-- <rule-modal rule-tip="{{ruleTip}}"></rule-modal>         -->
-        <!-- <customer-modal></customer-modal>        -->
+          <!-- <customer-modal></customer-modal>          -->
          <!-- <sign-modal></sign-modal>        -->
 </block>
 
