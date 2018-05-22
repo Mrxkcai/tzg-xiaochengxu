@@ -29,6 +29,9 @@
         this.triggerEvent('success')
       },
       sknowEvent() {
+        wx.navigateTo({
+          url: '../lottery_list/lottery_list',
+        });
         this.animation.opacity(0).step()
         this.setData({
           animationData: this.animation.export()
