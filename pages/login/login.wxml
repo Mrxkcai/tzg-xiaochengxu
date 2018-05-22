@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<block style="background:#FFF">
+<view style="background-color:#fff">
   <view class="login login-top">
     <image  class="login login-img"     
        src="{{src}}"></image>
@@ -25,5 +25,5 @@
        <!-- <rule-modal rule-tip="{{ruleTip}}"></rule-modal>         -->
           <!-- <customer-modal></customer-modal>          -->
          <!-- <sign-modal></sign-modal>        -->
-</block>
+</view>
 
