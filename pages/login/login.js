@@ -36,65 +36,16 @@ Page({
   // 当验证码失去焦点时验证
   inputYan: function (e) {
     this.setData({
-              // show: !this.data.show,
         sumbitShow: !this.data.sumbiShow
      })
-    // var that = this
-    // if (this.data.inputPhone.length == 0) {
-    //   wx.showToast({
-    //     title: '手机号或验证码错误！',
-    //     icon: "none",
-    //     duration: 2000
-    //   })
-    // } else {
-    //   wx.request({
-    //     url: 'https://api.taozugong.com/award/sms/verifyMobile',
-    //     method: 'POST',
-    //     data: {
-    //       mobile: this.data.inputPhone,
-    //       authCode: this.data.inputYan,
-    //       openId: 111
-    //     },
-    //     header: {
-    //       'content-type': 'application/x-www-form-urlencoded'
-    //     },
-    //     success: function (res) {
-    //       console.log(res.data)
-    //       if (res.data.code == 200) {
-    //         that.setData({
-    //           // show: !that.data.show,
-    //           sumbitShow: !that.data.sumbiShow
-    //         })
-    //       }
-    //     }
-    //   })
-    // }
-    // console.log(e.detail.value)
-    // var that = this;
-    // var inputYan = e.detail.value
-    // var huozheng = this.data.huozheng
-    // that.setData({
-    //   inputYan: inputYan,
-    //   zhengTrue: false,
-    // })
-    // if (inputYan.length >= 4) {
-    //   if (inputYan == huozheng) {
-    //     that.setData({
-    //       zhengTrue: true,
-    //     })
-    //   } else {
-    //     wx.showModal({
-    //       content: '输入验证码有误',
-    //       showCancel: false,
-    //       success: function (res) {
-    //       }
-    //     }) 
-    //   }
-    // }
+    this.setData({
+      inputYan: e.detail.value
+    })
   },
   //提交按钮的函数
   loginBtn: function () {
-    if (this.data.inputPhone.length == 0&&this.data.inputYan.length==0) {
+    var that = this
+    if (this.data.inputPhone.length == 0||this.data.inputYan.length==0) {
       wx.showToast({
         title: '手机号或验证码错误！',
         icon: "none",

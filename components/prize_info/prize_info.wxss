@@ -14,6 +14,7 @@
 .cover {
   width: 240rpx;
   margin-right: 24rpx;
+  max-height: 250rpx;
 }
 
 .prize-title {

@@ -64,6 +64,7 @@ Component({
       return time < 10? '0'+time : time
     },
     onGotUserInfo(e) {
+      console.log('info:'+ JSON.stringify(e))
       if (e.detail.userInfo) {
         app.globalData.userInfo = e.detail.userInfo
         wx.request({
@@ -85,7 +86,6 @@ Component({
                 tzgUserInfo: res.data.data
               })
             }
-            // this.getUserInfo()
           }
         })
       }

@@ -14,7 +14,7 @@ Page({
     loseTip: '好可惜，差点就中了呢，再试试吧',
     comfirmTip: {
       title: '客服电话',
-      context: '0571-8888888',
+      context: '0571-85180735',
       leftButton: '取消',
       rightButton: '拨打'
     },
@@ -132,7 +132,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')  
   },
   onLoad(options) {
-    this.getUserInfo()
+    this.toLogin()
 
     this.winModal = this.selectComponent('#winModal')
     this.loseModal = this.selectComponent('#loseModal')
@@ -153,11 +153,11 @@ Page({
       this.getAward(options.awardId)
     }
 
-    // this.setData({
-    //   awardList: [],
-    //   page: 1,
-    //   isEnd: false
-    // })
+    this.setData({
+      awardList: [],
+      page: 1,
+      isEnd: false
+    })
     this.getAwardList()
   },
   onReady() {
@@ -325,6 +325,7 @@ Page({
     })
   },
   onGotUserInfo(e) {
+    console.log(e)
     if (e.detail.userInfo) {
       app.globalData.userInfo = e.detail.userInfo
       wx.request({
@@ -339,11 +340,15 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: (res) => {
+          console.log('add:'+ JSON.stringify(res))
           //1010 已授权
           if (res.data.code == 200) { //第一次保存用户信息
             app.globalData.tzgUserInfo = res.data.data
+            this.setData({
+              userInfo: app.globalData.userInfo,
+              tzgUserInfo: app.globalData.tzgUserInfo
+            })
           }
-          this.getUserInfo()
         }
       })
     }
@@ -374,13 +379,14 @@ Page({
         }
       })
     }
+    console.log('lottery_login' + JSON.stringify(this.data.tzgUserInfo))
   },
   toLogin() {
     wx.login({
       success: res => {
         if (res.code) {
           wx.request({
-            url: 'https://api.taozugong.com/award/user/login',
+            url: baseUrl + '/user/login',
             method: 'GET',
             data: {
               code: res.code
@@ -392,6 +398,17 @@ Page({
               if (res.data.code == 200) {
                 app.globalData.openId = res.data.data.openId
                 app.globalData.tzgUserInfo = res.data.data
+                app.globalData.userInfo = res.data.data
+
+                wx.getUserInfo({
+                  success: res => {
+                    app.globalData.userInfo = res.userInfo
+                    this.setData({
+                      userInfo: res.userInfo,
+                      tzgUserInfo: app.globalData.tzgUserInfo
+                    })
+                  }
+                })
               } else if (res.data.code == 1003) { //未授权
                 app.globalData.openId = res.data.data
 
@@ -420,7 +437,7 @@ Page({
   },
   successTap() {
     wx.makePhoneCall({
-      phoneNumber: '0571-8888888'
+      phoneNumber: '0571-85180735'
     })
   }
 })
