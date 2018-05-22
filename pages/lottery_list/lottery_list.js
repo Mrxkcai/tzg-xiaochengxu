@@ -134,13 +134,21 @@ Page({
   onLoad(options) {
     this.getUserInfo()
 
+    this.winModal = this.selectComponent('#winModal')
+    this.loseModal = this.selectComponent('#loseModal')
+    this.signModal = this.selectComponent('#signModal')
+    this.customerModal = this.selectComponent('#customerModal')
+    this.ruleModal = this.selectComponent('#ruleModal')
+    this.dialogModal = this.selectComponent('#dialogModal')
+
     if (this.data.tzgUserInfo && this.data.tzgUserInfo.firstLogin) {
       setTimeout(()=>{  
         this.signModal.signOpen()
-      },800)
+      },1000)
     }
 
     //是否中奖提示
+    // this.getAward(16)
     if (options.awardId) {
       this.getAward(options.awardId)
     }
@@ -153,12 +161,6 @@ Page({
     this.getAwardList()
   },
   onReady() {
-    this.winModal = this.selectComponent('#winModal')
-    this.loseModal = this.selectComponent('#loseModal')
-    this.signModal = this.selectComponent('#signModal')
-    this.customerModal = this.selectComponent('#customerModal')
-    this.ruleModal = this.selectComponent('#ruleModal')
-    this.dialogModal = this.selectComponent('#dialogModal')
   },
   onShow() {
   },
@@ -180,17 +182,18 @@ Page({
     this.getAwardList();
   },
   onShareAppMessage(res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
       title: '推荐淘租公给你，和我一起抽奖吧',
-      imageUrl: '/images/logo.png',
+      imageUrl: res.target.dataset.url,
       path: '/pages/lottery_list/lottery_list'
     }
   },
   getAwardList() {
+    console.log(JSON.stringify({
+      openId: app.globalData.openId,
+      pageNo: this.data.pageNo,
+      pageSize: this.data.pageSize
+    }))
     wx.request({
       url: baseUrl + '/userAward/userAwardList',
       method: 'GET',
@@ -200,9 +203,10 @@ Page({
         pageSize: this.data.pageSize
       },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: (res) => {
+        console.log(res)
         wx.stopPullDownRefresh()
         if (res.data.code == 200) {
           if (!res.data.data || !res.data.data.dataList.length) {
@@ -239,14 +243,29 @@ Page({
         awardId: awardId
       },
       header: {
-        'content-type': 'application/json' // 默认值
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
       success: (res) => {
         if (res.data.code == 200) {
-
-          //
-          this.winModal.openModal()
-          this.loseModal.openModal()
+          if (res.data.data.winningStatus == 2) {
+            this.setData({
+              'winTip.title': '恭喜你抽中了' + res.data.data.productName
+            })
+            setTimeout(() => {
+              this.winModal.openModal()
+            }, 1000)
+          } else if (res.data.data.winningStatus == 1) {
+            setTimeout(() => {
+              this.loseModal.openModal()
+            }, 1000)
+          } else {
+            this.setData({
+              'winTip.title': '恭喜你抽中了' + res.data.data.productName
+            })
+            setTimeout(() => {
+              this.winModal.openModal()
+            }, 1000)
+          }
         } else {
           wx.showToast({
             title: JSON.stringify(res.data.message),
@@ -275,7 +294,7 @@ Page({
       data: {
         openId: app.globalData.openId,
         id: e.detail.target.dataset.id,
-        formId: 1||e.detail.formId,
+        formId: e.detail.formId,
         pageUrl: '/pages/lottery_list/lottery_list?awardId=' + e.detail.target.dataset.id
       },
       header: {
@@ -284,8 +303,12 @@ Page({
       success: (res) => {
         console.log(res)
         if (res.data.code == 200) {
+          this.toLogin()
+          wx.showToast({
+            title: '参与抽奖成功',
+            icon: 'none'
+          })
         } else if (res.data.code == 1006) {//未授权登录
-          
         } else {
           wx.showToast({
             title: JSON.stringify(res.data.message),
@@ -383,9 +406,11 @@ Page({
     });
   },
   bindPhone() {
-    wx.navigateTo({
-      url: '/pages/login/login'
-    })
+    if (!this.data.tzgUserInfo.mobile) {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    }
   },
   serverTap() {
     this.customerModal.serverOpen()

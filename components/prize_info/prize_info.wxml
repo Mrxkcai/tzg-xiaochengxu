@@ -24,7 +24,7 @@
     </view>
     <view class="prize-footer">
         <button wx:if="{{prizeInfo.status==2}}" class="prize-button gary-plain-button">分享好友</button>
-        <button wx:else class="prize-button orage-plain-button" hover-class="orage-solid-button" open-type="share">分享好友</button>
+        <button wx:else class="prize-button orage-plain-button" hover-class="orage-solid-button" open-type="share" data-url="{{prizeInfo.productPic}}">分享好友</button>
 
         <view class="prize-right-button">
           <form report-submit="true" bindsubmit="joinAward">

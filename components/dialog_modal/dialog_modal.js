@@ -24,6 +24,10 @@
     },
     methods: {
       //点击“知道了”关闭对话框
+      success() {
+        this.sknowEvent()
+        this.triggerEvent('success')
+      },
       sknowEvent() {
         this.animation.opacity(0).step()
         this.setData({

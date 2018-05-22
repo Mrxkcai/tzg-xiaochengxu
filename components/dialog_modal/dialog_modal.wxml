@@ -2,7 +2,7 @@
   <view wx:if="{{show}}" animation="{{animationData}}" style="display:inline-block;background: rgba(0,0,0,0.5);width:100%;height:100%; position:fixed;top:0rpx;left:0rpx; z-index:99;opacity:0"> 
    <view class="login-dislog">
       <text class="login-dislog-top" style="{{contentStyle}}">{{content}}</text>
-      <view class="login-dislog-bottom" bindtap="sknowEvent">{{buttonTitle}}</view>
+      <view class="login-dislog-bottom" bindtap="success">{{buttonTitle}}</view>
    </view>
   </view>
 </view>

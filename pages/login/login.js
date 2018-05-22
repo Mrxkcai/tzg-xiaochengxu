@@ -1,6 +1,5 @@
-//index.js
-//获取应用实例
-// var interval = null 
+const app = getApp()
+
 Page({
   data: {
     src: "../../images/logo.png",
@@ -38,9 +37,47 @@ Page({
   },
   // 当验证码失去焦点时验证
   inputYan: function (e) {
+    var that = this
+    console.log(this.data.inputPhone, this.data.inputYan)
+    // var myreg = /^[1][3,4,5,7,8][0-9]{9}$/g;
+    // if (!myreg.test(this.data.inputPhone)) {
+    //   wx.showToast({
+    //     title: '请输入11位手机号',
+    //     icon: "none",
+    //   })
+    // }
     this.setData({
-      inputYan: e.detail.value
+      inputYan: e.detail.value,
     })
+    if (this.data.inputPhone.length == 0) {
+      wx.showToast({
+        title: '手机号或验证码错误！',
+        icon: "none",
+        duration: 2000
+      })
+    } else {
+      // wx.request({
+      //   url: 'https://api.taozugong.com/award/sms/verifyMobile',
+      //   method: 'POST',
+      //   data: {
+      //     mobile: this.data.inputPhone,
+      //     authCode: this.data.inputYan,
+      //     openId: app.globalData.openId
+      //   },
+      //   header: {
+      //     'content-type': 'application/x-www-form-urlencoded'
+      //   },
+      //   success: function (res) {
+      //     console.log(res.data)
+      //     if (res.data.code == 200) {
+      //       that.setData({
+      //         // show: !that.data.show,
+      //         sumbitShow: !that.data.sumbiShow
+      //       })
+      //     }
+      //   }
+      // })
+    }
     // console.log(e.detail.value)
     // var that = this;
     // var inputYan = e.detail.value
@@ -55,57 +92,49 @@ Page({
     //       zhengTrue: true,
     //     })
     //   } else {
-    //     that.setData({
-    //       zhengTrue: false,
-    //       sumbitShow: !this.data.sumbitShow,
-    //     })
     //     wx.showModal({
     //       content: '输入验证码有误',
     //       showCancel: false,
     //       success: function (res) {
     //       }
-    //     })
-        
+    //     }) 
     //   }
     // }
   },
   //提交按钮的函数
   loginBtn: function () {
-    var that=this
-    console.log(this.data.inputPhone, this.data.inputYan)
-    if (this.data.inputPhone.length == 0 ) {
-        wx.showToast({
-          title: '手机号或验证码错误！',
-          icon: "none",
-          duration: 2000
-        })
+    var that = this
+    if (this.data.inputPhone.length == 0) {
+      wx.showToast({
+        title: '手机号或验证码错误！',
+        icon: "none",
+        duration: 2000
+      })
     } else {
       wx.request({
-        url:'https://api.taozugong.com/award/sms/verifyMobile',
-        method:'POST',
-        data:{
-          mobile:this.data.inputPhone,
-          authCode:this.data.inputYan,
-          openId:111
+        url: 'https://api.taozugong.com/award/sms/verifyMobile',
+        method: 'POST',
+        data: {
+          mobile: this.data.inputPhone,
+          authCode: this.data.inputYan,
+          openId: app.globalData.openId
         },
-        header:{
+        header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
-        success:function(res){
+        success: function (res) {
           console.log(res.data)
-          if(res.data.code==200){
-              that.setData({
-               show: !that.data.show,
-               sumbitShow: !that.data.sumbiShow
-            })
+          if (res.data.code == 200) {
+            this.loginDialog = this.selectComponent('#loginDialog')
+            this.loginDialog.onShow()
           }
         }
       })
     }
   },
-  // bindPhone(e) {
-  //   this.setData({
-  //     inputPhone: e.detail.value
-  //   })
-  // }
+  loginSuccess() {
+    wx.navigateTo({
+      url: '/pages/lottery_list/lottery_list'
+    })
+  }
 })

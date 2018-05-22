@@ -36,7 +36,6 @@ Component({
   },
   methods: {
     joinAward(e) {
-      console.log(e)
       this.triggerEvent('joinAward', e.detail)
     },
     getCountdown() {
